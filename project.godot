@@ -26,6 +26,7 @@ window/stretch/mode="canvas_items"
 [layer_names]
 
 2d_physics/layer_1="world"
+2d_physics/layer_2="player"
 
 [rendering]
 
