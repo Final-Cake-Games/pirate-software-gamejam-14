@@ -40,6 +40,9 @@ func _physics_process(delta):
 	
 	# Lógica de andar/parar na !!horizontal!!
 	if direction != 0:  # Estamos a começar a andar
+		if is_on_ladder:
+			exit_ladder()
+			
 		velocity.x = direction * MAX_SPEED  # Aplica velocidade máxima imediatamente
 	else:  # Estamos a parar
 		velocity.x = move_toward(velocity.x, 0, 30)  # Abranda até 0 de 30 em 30 unidades
@@ -50,8 +53,7 @@ func _physics_process(delta):
 	
 func jump(): 
 	if is_on_ladder:
-		is_on_ladder = false 
-		jumps_available = 0
+		exit_ladder()
 		return 
 	
 	if jumps_available == 2:  # Verifica se é 1º ou 2º salto
@@ -60,6 +62,10 @@ func jump():
 		velocity.y = -SECOND_JUMP_FORCE
 	
 	jumps_available -= 1
+	
+func exit_ladder():
+	is_on_ladder = false 
+	jumps_available = 0
 	
 func animation_updater():
 	# Responsável por atualizar as animações
