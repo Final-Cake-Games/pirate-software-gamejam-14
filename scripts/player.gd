@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var player_sprite : Sprite2D = $Sprite2D
 
 # Variáveis de física
-@export var MAX_SPEED : float = 500
+@export var MAX_SPEED : float = 250
 @export var GRAVITY : float = 400
 @export var JUMP_FORCE : float = 500
 
