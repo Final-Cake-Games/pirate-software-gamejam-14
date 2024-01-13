@@ -14,6 +14,8 @@ var direction : float
 
 func _process(delta):
 	direction = Input.get_axis('move_left', 'move_right')
+	if Input.is_action_just_pressed('jump'):
+		jump()
 
 func _physics_process(delta):
 	# Se não está no chão, aplica gravidade
@@ -25,8 +27,9 @@ func _physics_process(delta):
 		velocity.x = direction * MAX_SPEED  # Aplica velocidade máxima imediatamente
 	else:  # Estamos a parar
 		velocity.x = move_toward(velocity.x, 0, 20)  # Abranda até 0 de 20 em 20 unidades
-		
+	
 	move_and_slide()
 
-
-
+func jump():
+	velocity.y = -JUMP_FORCE
+		
