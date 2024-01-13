@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://8v6t1lkk3nv8"]
+[gd_scene load_steps=15 format=3 uid="uid://8v6t1lkk3nv8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0awtb"]
 [ext_resource type="Texture2D" uid="uid://bpr7nwqliluff" path="res://assets/player_placeholder_assets/Dude_Monster_Run_6.png" id="1_hbhhr"]
 [ext_resource type="Texture2D" uid="uid://82qqee28k0s8" path="res://assets/player_placeholder_assets/Dude_Monster_Idle_4.png" id="1_sjqlr"]
+[ext_resource type="Texture2D" uid="uid://bm0eyuahyhejt" path="res://assets/player_placeholder_assets/Dude_Monster_Climb_4.png" id="2_88rtc"]
 [ext_resource type="Texture2D" uid="uid://bpbya1lvwvono" path="res://assets/player_placeholder_assets/Dude_Monster_Jump_8.png" id="2_sa5nv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkphc"]
@@ -187,9 +188,51 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_yt38p"]
+resource_name = "climbing"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_88rtc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48i4r"]
 _data = {
 "RESET": SubResource("Animation_jt8ua"),
+"climbing": SubResource("Animation_yt38p"),
 "fall": SubResource("Animation_0bi7k"),
 "idle": SubResource("Animation_4ebbr"),
 "jump_1": SubResource("Animation_1pxns"),
@@ -210,8 +253,8 @@ shape = SubResource("CapsuleShape2D_wkphc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("2_sa5nv")
-hframes = 8
+texture = ExtResource("2_88rtc")
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
