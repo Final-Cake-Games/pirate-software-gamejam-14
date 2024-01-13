@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://8v6t1lkk3nv8"]
+[gd_scene load_steps=9 format=3 uid="uid://8v6t1lkk3nv8"]
 
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_0awtb"]
 [ext_resource type="Texture2D" uid="uid://bpr7nwqliluff" path="res://assets/player_placeholder_assets/Dude_Monster_Run_6.png" id="1_hbhhr"]
 [ext_resource type="Texture2D" uid="uid://82qqee28k0s8" path="res://assets/player_placeholder_assets/Dude_Monster_Idle_4.png" id="1_sjqlr"]
 
@@ -113,6 +114,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 999
+script = ExtResource("1_0awtb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
