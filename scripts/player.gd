@@ -8,19 +8,24 @@ extends CharacterBody2D
 @export var MAX_SPEED : float = 250
 @export var GRAVITY : float = 1000
 @export var JUMP_FORCE : float = 450
+@export var SECOND_JUMP_FORCE : float = 250
+@export var MAX_JUMPS : int = 2
 
-# Input do utilizador (direção no X)
-var direction : float
+var direction : float  # Input do utilizador (direção no X)
+var jumps_available = MAX_JUMPS  
 
 func _process(delta):
 	direction = Input.get_axis('move_left', 'move_right')
-	if Input.is_action_just_pressed('jump'):
+	if Input.is_action_just_pressed('jump') && jumps_available > 0:
 		jump()
 
 func _physics_process(delta):
-	# Se não está no chão, aplica gravidade
-	if !is_on_floor():
+	move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
+	
+	if !is_on_floor():  # Se não está no chão, aplica gravidade
 		velocity.y += GRAVITY * delta
+	else:  # Se está dá reset aos saltos
+		jumps_available = MAX_JUMPS
 	
 	# Lógica de andar/parar na !!horizontal!!
 	if direction != 0:  # Estamos a começar a andar
@@ -28,8 +33,10 @@ func _physics_process(delta):
 	else:  # Estamos a parar
 		velocity.x = move_toward(velocity.x, 0, 20)  # Abranda até 0 de 20 em 20 unidades
 	
-	move_and_slide()
-
-func jump():
-	velocity.y = -JUMP_FORCE
-		
+func jump():  
+	if jumps_available == 2:  # Verifica se é 1º ou 2º salto
+		velocity.y = -JUMP_FORCE
+	else:
+		velocity.y = -SECOND_JUMP_FORCE
+	
+	jumps_available -= 1
