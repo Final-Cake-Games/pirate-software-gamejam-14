@@ -59,3 +59,9 @@ func animation_updater():
 				animation_player.pause() 
 		else:  # A descer
 			animation_player.play('fall')
+
+func _on_ladder_check_body_entered(body):
+	print('on ladder')
+	
+func _on_ladder_check_body_exited(body):
+	print('off ladder')
