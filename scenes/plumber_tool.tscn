@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dobs8dph3c6j6"]
+
+[ext_resource type="Texture2D" uid="uid://mxb48bv87fm2" path="res://assets/player_assets/items/PlumberKey.png" id="1_xm0m8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lmted"]
+friction = 0.5
+bounce = 0.7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf1eq"]
+size = Vector2(3, 15)
+
+[node name="PlumberTool" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 19
+physics_material_override = SubResource("PhysicsMaterial_lmted")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_lf1eq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xm0m8")
