@@ -240,7 +240,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d6dx"]
-size = Vector2(10, 15)
+size = Vector2(10, 29)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 999
@@ -270,7 +270,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderCheck"]
-position = Vector2(-1, -9.5)
+position = Vector2(-1, -13.5)
 shape = SubResource("RectangleShape2D_8d6dx")
 
 [connection signal="body_entered" from="LadderCheck" to="." method="_on_ladder_check_body_entered"]
