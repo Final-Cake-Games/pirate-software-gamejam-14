@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://0msmbwsgdvkq"]
+
+[ext_resource type="Texture2D" uid="uid://b8s7hi7re5fgf" path="res://assets/ladder_tile_set(16x16).png" id="1_f4txs"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxxdp"]
+texture = ExtResource("1_f4txs")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.875, -8, -6, 8, 6, 8, 5.875, -8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.875, -8, -6, 8, 6, 8, 5.875, -8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.875, -8, -6, 8, 6, 8, 5.875, -8)
+
+[sub_resource type="TileSet" id="TileSet_csawn"]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_sxxdp")
+
+[node name="LadderTileMap" type="TileMap"]
+tile_set = SubResource("TileSet_csawn")
+format = 2
