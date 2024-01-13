@@ -69,6 +69,6 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_kaod0")
 
-[node name="TileMap" type="TileMap"]
+[node name="LevelTileMap" type="TileMap"]
 tile_set = SubResource("TileSet_uj5p5")
 format = 2
