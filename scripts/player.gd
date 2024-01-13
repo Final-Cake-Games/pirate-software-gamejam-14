@@ -5,11 +5,11 @@ extends CharacterBody2D
 @onready var player_sprite : Sprite2D = $Sprite2D
 
 # Variáveis de física
-@export var MAX_SPEED : float = 250
+@export var MAX_SPEED : float = 200
 @export var CLIMB_SPEED : float = 100
 @export var GRAVITY : float = 900
-@export var JUMP_FORCE : float = 400
-@export var SECOND_JUMP_FORCE : float = 250
+@export var JUMP_FORCE : float = 300
+@export var SECOND_JUMP_FORCE : float = 200
 @export var MAX_JUMPS : int = 2
 
 var direction : float  # Input do utilizador (direção no X)
@@ -50,6 +50,9 @@ func _physics_process(delta):
 	# Lógica de subir/descer escadas	
 	if is_on_ladder:
 		velocity.y = Input.get_axis('climb_up', 'climb_down') * CLIMB_SPEED
+		
+		if is_near_ladder == false:
+			exit_ladder()	
 	
 func jump(): 
 	if is_on_ladder:
@@ -90,8 +93,8 @@ func animation_updater():
 		else:  # A descer
 			animation_player.play('fall')
 
-func _on_ladder_check_body_entered(body):
+func _on_ladder_check_body_entered(_body):
 	is_near_ladder = true
 	
-func _on_ladder_check_body_exited(body):
+func _on_ladder_check_body_exited(_body):
 	is_near_ladder = false
