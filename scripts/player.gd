@@ -6,8 +6,8 @@ extends CharacterBody2D
 
 # Variáveis de física
 @export var MAX_SPEED : float = 250
-@export var GRAVITY : float = 1000
-@export var JUMP_FORCE : float = 450
+@export var GRAVITY : float = 900
+@export var JUMP_FORCE : float = 400
 @export var SECOND_JUMP_FORCE : float = 250
 @export var MAX_JUMPS : int = 2
 
