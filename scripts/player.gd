@@ -14,10 +14,11 @@ extends CharacterBody2D
 var direction : float  # Input do utilizador (direção no X)
 var jumps_available = MAX_JUMPS  
 
-func _process(delta):
+func _process(_delta):
 	direction = Input.get_axis('move_left', 'move_right')
 	if Input.is_action_just_pressed('jump') && jumps_available > 0:
 		jump()
+	animation_updater()
 
 func _physics_process(delta):
 	move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
@@ -40,3 +41,21 @@ func jump():
 		velocity.y = -SECOND_JUMP_FORCE
 	
 	jumps_available -= 1
+	
+func animation_updater():
+	# Responsável por atualizar as animações
+	if direction != 0:  # Se for 0 não atualiza e guarda a ultima alteração
+		player_sprite.flip_h = (direction == -1)  # Se a direção for esquerda liga o flip na horizontal
+	
+	if is_on_floor():
+		if velocity == Vector2.ZERO:
+			animation_player.play('idle')
+		else:
+			animation_player.play('run')
+	else:
+		if velocity.y < 0:  # A subir
+			animation_player.play('jump_1')
+			if player_sprite.frame == 3:  # Pausa a animação na ultima frame
+				animation_player.pause() 
+		else:  # A descer
+			animation_player.play('fall')
