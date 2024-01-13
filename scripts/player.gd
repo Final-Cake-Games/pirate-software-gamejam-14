@@ -14,13 +14,19 @@ extends CharacterBody2D
 
 var direction : float  # Input do utilizador (direção no X)
 var jumps_available : int = 0
+var is_near_ladder : bool = false
 var is_on_ladder : bool = false
 
 func _process(_delta):
 	direction = Input.get_axis('move_left', 'move_right')
 	if Input.is_action_just_pressed('jump') && jumps_available > 0:
 		jump()
-		
+	
+	if is_near_ladder && (Input.is_action_just_pressed('climb_up') || Input.is_action_just_pressed('climb_down')):
+		is_on_ladder = true
+	if !is_near_ladder:
+		is_on_ladder = false
+			
 	animation_updater()
 
 func _physics_process(delta):
@@ -28,7 +34,8 @@ func _physics_process(delta):
 	
 	if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
 		velocity.y += GRAVITY * delta
-	else:  # Se está dá reset aos saltos
+	
+	if is_on_floor():  # Se está dá reset aos saltos
 		jumps_available = MAX_JUMPS
 	
 	# Lógica de andar/parar na !!horizontal!!
@@ -41,7 +48,12 @@ func _physics_process(delta):
 	if is_on_ladder:
 		velocity.y = Input.get_axis('climb_up', 'climb_down') * CLIMB_SPEED
 	
-func jump():  
+func jump(): 
+	if is_on_ladder:
+		is_on_ladder = false 
+		jumps_available = 0
+		return 
+	
 	if jumps_available == 2:  # Verifica se é 1º ou 2º salto
 		velocity.y = -JUMP_FORCE
 	else:
@@ -73,7 +85,7 @@ func animation_updater():
 			animation_player.play('fall')
 
 func _on_ladder_check_body_entered(body):
-	is_on_ladder = true
+	is_near_ladder = true
 	
 func _on_ladder_check_body_exited(body):
-	is_on_ladder = false
+	is_near_ladder = false
