@@ -59,6 +59,11 @@ func animation_updater():
 			animation_player.play('idle')
 		else:
 			animation_player.play('run')
+	elif is_on_ladder:
+		if velocity.y != 0:
+			animation_player.play('climbing')
+		else:
+			animation_player.pause()
 	else:
 		if velocity.y < 0:  # A subir
 			animation_player.play('jump_1')
