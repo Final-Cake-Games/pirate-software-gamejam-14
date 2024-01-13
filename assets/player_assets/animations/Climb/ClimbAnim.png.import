@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nmfqb8eynqnq"
-path="res://.godot/imported/idleAnim.png-bde62a6006d92ca6e6e40d9a69460b0f.ctex"
+uid="uid://dldtkgnl07djs"
+path="res://.godot/imported/ClimbAnim.png-c1c5203ac4c4b5763ba77959af655c59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player_assets/animations/Idle/idleAnim.png"
-dest_files=["res://.godot/imported/idleAnim.png-bde62a6006d92ca6e6e40d9a69460b0f.ctex"]
+source_file="res://assets/player_assets/animations/Climb/ClimbAnim.png"
+dest_files=["res://.godot/imported/ClimbAnim.png-c1c5203ac4c4b5763ba77959af655c59.ctex"]
 
 [params]
 

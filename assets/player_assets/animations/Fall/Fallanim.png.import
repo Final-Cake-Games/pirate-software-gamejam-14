@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp18id4rdjuql"
-path="res://.godot/imported/Fallanim.png-af4a84536062e04789b990725ebdcbf1.ctex"
+uid="uid://d13yhswid7eij"
+path="res://.godot/imported/FallAnim.png-32ca435858655ec235aa52c49165f180.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player_assets/animations/Fall/Fallanim.png"
-dest_files=["res://.godot/imported/Fallanim.png-af4a84536062e04789b990725ebdcbf1.ctex"]
+source_file="res://assets/player_assets/animations/Fall/FallAnim.png"
+dest_files=["res://.godot/imported/FallAnim.png-32ca435858655ec235aa52c49165f180.ctex"]
 
 [params]
 
