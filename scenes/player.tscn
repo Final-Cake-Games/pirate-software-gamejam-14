@@ -130,3 +130,4 @@ libraries = {
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -50)
