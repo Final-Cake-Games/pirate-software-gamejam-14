@@ -85,7 +85,7 @@ func animation_updater():
 	else:
 		if velocity.y < 0:  # A subir
 			animation_player.play('jump_1')
-			if player_sprite.frame == 3:  # Pausa a animação na ultima frame
+			if player_sprite.frame == 6:  # Pausa a animação na ultima frame
 				animation_player.pause() 
 		else:  # A descer
 			animation_player.play('fall')
