@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=6 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Texture2D" uid="uid://ncfdrlcs0uxs" path="res://assets/city.png" id="2_6g3pb"]
 [ext_resource type="PackedScene" uid="uid://0msmbwsgdvkq" path="res://scenes/ladder_tile_map.tscn" id="2_urrya"]
 [ext_resource type="PackedScene" uid="uid://8v6t1lkk3nv8" path="res://scenes/player.tscn" id="3_gw6fe"]
+[ext_resource type="PackedScene" uid="uid://dobs8dph3c6j6" path="res://scenes/plumber_tool.tscn" id="5_t0i53"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -19,4 +20,9 @@ scale = Vector2(1.0625, 1.07353)
 texture = ExtResource("2_6g3pb")
 
 [node name="Player" parent="." instance=ExtResource("3_gw6fe")]
-position = Vector2(57, 8)
+position = Vector2(33, 211)
+
+[node name="PlumberTool" parent="." instance=ExtResource("5_t0i53")]
+position = Vector2(61, 76)
+rotation = 1.11213
+mass = 0.5
