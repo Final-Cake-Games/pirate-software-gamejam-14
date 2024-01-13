@@ -26,7 +26,7 @@ func _process(_delta):
 func _physics_process(delta):
 	move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
 	
-	if !is_on_floor() && !is_on_ladder:  # Se não está no chão, aplica gravidade
+	if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
 		velocity.y += GRAVITY * delta
 	else:  # Se está dá reset aos saltos
 		jumps_available = MAX_JUMPS
@@ -35,8 +35,9 @@ func _physics_process(delta):
 	if direction != 0:  # Estamos a começar a andar
 		velocity.x = direction * MAX_SPEED  # Aplica velocidade máxima imediatamente
 	else:  # Estamos a parar
-		velocity.x = move_toward(velocity.x, 0, 20)  # Abranda até 0 de 20 em 20 unidades
-		
+		velocity.x = move_toward(velocity.x, 0, 30)  # Abranda até 0 de 30 em 30 unidades
+	
+	# Lógica de subir/descer escadas	
 	if is_on_ladder:
 		velocity.y = Input.get_axis('climb_up', 'climb_down') * CLIMB_SPEED
 	
