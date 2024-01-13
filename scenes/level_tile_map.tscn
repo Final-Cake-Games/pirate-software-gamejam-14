@@ -66,7 +66,7 @@ texture = ExtResource("1_jcny2")
 
 [sub_resource type="TileSet" id="TileSet_uj5p5"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_mask = 10
 sources/0 = SubResource("TileSetAtlasSource_kaod0")
 
 [node name="LevelTileMap" type="TileMap"]
