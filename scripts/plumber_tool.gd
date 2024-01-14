@@ -1,10 +1,11 @@
 extends RigidBody2D
 
-@export var THROW_STR = 1500
+@export var THROW_STR : float = 1500
 
 var player : CharacterBody2D 
-var picked_up = false
-var can_be_picked_up = false
+var picked_up : bool = false
+var can_be_picked_up : bool = false
+var smoothed_mouse_pos : Vector2
 
 func _ready():
 	player = get_node('../Player')
@@ -16,8 +17,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	if picked_up == true:
-		position = get_node('../Player/WeaponPos').global_position
-		look_at(get_global_mouse_position())
+		position = player.get_child(0).global_position
+		smoothed_mouse_pos = lerp(smoothed_mouse_pos, get_global_mouse_position(), 0.3)
+		look_at(smoothed_mouse_pos)
 		
 		linear_velocity = Vector2.ZERO
 		
