@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://mhreb0gsu0kf"]
+
+[ext_resource type="Texture2D" uid="uid://guf5a2smkymc" path="res://assets/temp/water.jpg" id="1_4hme3"]
+[ext_resource type="Script" path="res://scripts/Fillwater.gd" id="1_7cxln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywy2a"]
+size = Vector2(361, 356)
+
+[node name="Water" type="Area2D"]
+script = ExtResource("1_7cxln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_ywy2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0117647, 0.733333, 0.521569, 1)
+texture = ExtResource("1_4hme3")
