@@ -307,6 +307,9 @@ z_index = 999
 collision_layer = 2
 script = ExtResource("1_0awtb")
 
+[node name="WeaponPos" type="Marker2D" parent="."]
+position = Vector2(5, -6)
+
 [node name="LadderCheck" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
@@ -319,13 +322,10 @@ shape = SubResource("RectangleShape2D_8d6dx")
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_d84wj")
 
-[node name="WeaponPos" type="Marker2D" parent="."]
-position = Vector2(5, -6)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -9)
-texture = ExtResource("2_wnxk6")
-hframes = 3
+texture = ExtResource("2_8koua")
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
