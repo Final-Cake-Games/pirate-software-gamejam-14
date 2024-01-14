@@ -23,15 +23,18 @@ physics_material_override = SubResource("PhysicsMaterial_lmted")
 script = ExtResource("1_bwqqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -4.5)
+position = Vector2(6.5, 1.5)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_lf1eq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(6, 0)
+rotation = 1.5708
 texture = ExtResource("1_xm0m8")
 
 [node name="PickUpDetect" type="Area2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(6, 0)
+rotation = 1.5708
 collision_layer = 8
 collision_mask = 2
 

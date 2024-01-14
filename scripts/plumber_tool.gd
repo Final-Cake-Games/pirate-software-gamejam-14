@@ -11,6 +11,7 @@ func _process(delta):
 func _physics_process(delta):
 	if picked_up == true:
 		position = get_node('../Player/WeaponPos').global_position
+		look_at(get_global_mouse_position())
 		
 		linear_velocity = Vector2.ZERO
 		
