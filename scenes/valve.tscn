@@ -16,7 +16,7 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_qcsqe"]
 animations = [{
 "frames": [{
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kferw")
 }, {
 "duration": 1.0,
@@ -24,7 +24,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"closing",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [],
 "loop": true,
@@ -40,4 +40,4 @@ shape = SubResource("CircleShape2D_sf3vd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qcsqe")
 animation = &"closing"
-frame_progress = 0.70316
+frame_progress = 0.484719
