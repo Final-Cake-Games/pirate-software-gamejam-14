@@ -23,7 +23,7 @@ physics_material_override = SubResource("PhysicsMaterial_lmted")
 script = ExtResource("1_bwqqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6.5, 1.5)
+position = Vector2(4.5, 0.5)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_lf1eq")
 

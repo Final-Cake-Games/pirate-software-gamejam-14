@@ -1,7 +1,13 @@
 extends RigidBody2D
 
+@export var THROW_STR = 1500
+
+var player : CharacterBody2D 
 var picked_up = false
 var can_be_picked_up = false
+
+func _ready():
+	player = get_node('../Player')
 
 func _process(delta):
 	if can_be_picked_up:
@@ -14,6 +20,11 @@ func _physics_process(delta):
 		look_at(get_global_mouse_position())
 		
 		linear_velocity = Vector2.ZERO
+		
+		if Input.is_action_just_pressed('throw'):
+			picked_up = false
+			var trow_dir = player.global_position.direction_to(get_global_mouse_position())
+			apply_impulse(trow_dir * THROW_STR)
 		
 		if Input.is_action_just_pressed('drop_item'):
 			picked_up = false
