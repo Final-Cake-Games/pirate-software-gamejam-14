@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=9 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8v6t1lkk3nv8" path="res://scenes/player.tscn" id="3_gw6fe"]
 [ext_resource type="PackedScene" uid="uid://dobs8dph3c6j6" path="res://scenes/plumber_tool.tscn" id="5_t0i53"]
 [ext_resource type="PackedScene" uid="uid://c07kvstx5o1ih" path="res://scenes/pipes_tile_map.tscn" id="7_qprlw"]
+[ext_resource type="PackedScene" uid="uid://bmgw3p3t45vjj" path="res://scenes/sewage_water_spreading.tscn" id="8_xe7oh"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_tjh8e")
@@ -16,6 +17,10 @@ layer_0/tile_data = PackedInt32Array(393215, 0, 0, 327680, 65536, 0, 327685, 655
 
 [node name="LadderTileMap" parent="." instance=ExtResource("2_urrya")]
 layer_0/tile_data = PackedInt32Array(1245201, 0, 2, 1179665, 0, 1, 1114129, 0, 1, 1048593, 0, 1, 983057, 0, 0, 1245208, 0, 2, 1179672, 0, 1, 1114136, 0, 1, 1048600, 0, 0)
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("8_xe7oh")]
+position = Vector2(464, 263)
+lifetime = 0.3
 
 [node name="PipesTileMap" parent="." instance=ExtResource("7_qprlw")]
 layer_0/tile_data = PackedInt32Array(1048606, 262146, 0, 1048605, 196610, 0, 458782, 262146, 0, 458781, 262146, 0, 458780, 262146, 0, 458779, 262146, 0, 458778, 262146, 0, 458777, 2, 5, 393241, 2, 1, 524318, 262146, 0, 524317, 262146, 0, 524316, 262146, 0, 524315, 262146, 0, 524314, 262146, 0, 524313, 262146, 0, 524312, 2, 5, 458776, 2, 1, 393240, 2, 1, 1114112, 262146, 0, 1114113, 262146, 0, 1114114, 262146, 0, 1114115, 131074, 3, 1179651, 2, 1, 1245187, 2, 1, 1245184, 65538, 0, 1245185, 131074, 0, 1245197, 2, 0, 393225, 65538, 1, 393226, 131074, 1, 458761, 65538, 1, 458762, 131074, 1, 524297, 65538, 1, 524298, 131074, 1, 589833, 65538, 1, 589834, 131074, 1, 655369, 65538, 2, 655370, 131074, 2)
