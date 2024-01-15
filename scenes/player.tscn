@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0awtb"]
 [ext_resource type="Texture2D" uid="uid://b2s2ikkrsxird" path="res://assets/player_assets/animations/Walk/walkanim.png" id="2_1sgy2"]
-[ext_resource type="Texture2D" uid="uid://nmfqb8eynqnq" path="res://assets/player_assets/animations/Idle/IdleAnim.png" id="2_8koua"]
-[ext_resource type="Texture2D" uid="uid://bbsgcg1mbpmug" path="res://assets/player_assets/animations/Jump/JumpAnim.png" id="2_bslii"]
+[ext_resource type="Texture2D" uid="uid://nmfqb8eynqnq" path="res://assets/player_assets/animations/Idle/idleAnim.png" id="2_8koua"]
+[ext_resource type="Texture2D" uid="uid://bbsgcg1mbpmug" path="res://assets/player_assets/animations/Jump/jumpanim.png" id="2_bslii"]
 [ext_resource type="Texture2D" uid="uid://dldtkgnl07djs" path="res://assets/player_assets/animations/Climb/ClimbAnim.png" id="2_umxuk"]
-[ext_resource type="Texture2D" uid="uid://d13yhswid7eij" path="res://assets/player_assets/animations/Fall/Fallanim.png" id="2_wnxk6"]
+[ext_resource type="Texture2D" uid="uid://d13yhswid7eij" path="res://assets/player_assets/animations/Fall/FallAnim.png" id="2_wnxk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d6dx"]
 size = Vector2(10, 26)
@@ -30,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponPos:position")
+tracks/1/path = NodePath("Node2D/WeaponPos:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -124,14 +124,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponPos:position")
+tracks/3/path = NodePath("Node2D/WeaponPos:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(11, -16), Vector2(10, -19), Vector2(11, -17)]
+"values": [Vector2(6, -16), Vector2(5, -19), Vector2(6, -17)]
 }
 
 [sub_resource type="Animation" id="Animation_4ebbr"]
@@ -177,14 +177,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponPos:position")
+tracks/3/path = NodePath("Node2D/WeaponPos:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(5, -6), Vector2(5, -7), Vector2(5, -6)]
+"values": [Vector2(0, -6), Vector2(0, -7), Vector2(0, -6)]
 }
 
 [sub_resource type="Animation" id="Animation_1pxns"]
@@ -229,14 +229,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponPos:position")
+tracks/3/path = NodePath("Node2D/WeaponPos:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(5, -6), Vector2(5, -5), Vector2(5, -7), Vector2(8, -14), Vector2(6, -16), Vector2(11, -17)]
+"values": [Vector2(0, -6), Vector2(0, -5), Vector2(0, -7), Vector2(3, -14), Vector2(1, -16), Vector2(6, -17)]
 }
 
 [sub_resource type="Animation" id="Animation_8m54f"]
@@ -282,14 +282,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WeaponPos:position")
+tracks/3/path = NodePath("Node2D/WeaponPos:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(7, -7), Vector2(7, -8), Vector2(7, -7)]
+"values": [Vector2(2, -7), Vector2(2, -8), Vector2(2, -7)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48i4r"]
@@ -307,7 +307,10 @@ z_index = 999
 collision_layer = 2
 script = ExtResource("1_0awtb")
 
-[node name="WeaponPos" type="Marker2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(5, 0)
+
+[node name="WeaponPos" type="Marker2D" parent="Node2D"]
 position = Vector2(5, -6)
 
 [node name="LadderCheck" type="Area2D" parent="."]
@@ -324,8 +327,8 @@ shape = SubResource("RectangleShape2D_d84wj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -9)
-texture = ExtResource("2_8koua")
-hframes = 4
+texture = ExtResource("2_wnxk6")
+hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

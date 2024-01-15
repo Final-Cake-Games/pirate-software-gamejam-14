@@ -17,7 +17,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if picked_up == true:
-		position = player.get_child(0).global_position
+		position = player.get_child(0).get_child(0).global_position
 		smoothed_mouse_pos = lerp(smoothed_mouse_pos, get_global_mouse_position(), 0.3)
 		look_at(smoothed_mouse_pos)
 		

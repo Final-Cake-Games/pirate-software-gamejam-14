@@ -3,6 +3,7 @@ extends CharacterBody2D
 # Referências aos nós necessários para animar
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var player_sprite : Sprite2D = $Sprite2D
+@onready var weapon_position_father : Node2D = $Node2D
 
 # Variáveis de física
 @export var MAX_SPEED : float = 200
@@ -40,7 +41,7 @@ func _physics_process(delta):
 	
 	# Lógica de andar/parar na !!horizontal!!
 	if direction != 0:  # Estamos a começar a andar
-		if is_on_ladder:
+		if is_on_ladder:  # Sai da escada se andar na horizontal nela
 			exit_ladder()
 			
 		velocity.x = direction * MAX_SPEED  # Aplica velocidade máxima imediatamente
@@ -51,11 +52,11 @@ func _physics_process(delta):
 	if is_on_ladder:
 		velocity.y = Input.get_axis('climb_up', 'climb_down') * CLIMB_SPEED
 		
-		if is_near_ladder == false:
+		if is_near_ladder == false:  # Sai da escada se subir toda
 			exit_ladder()	
 	
 func jump(): 
-	if is_on_ladder:
+	if is_on_ladder:  # Sai da escada se tentar saltar nela
 		exit_ladder()
 		return 
 	
@@ -66,15 +67,12 @@ func jump():
 	
 	jumps_available -= 1
 	
-func exit_ladder():
-	is_on_ladder = false 
-	jumps_available = 0
-	
 func animation_updater():
 	# Responsável por atualizar as animações
 	if direction != 0:  # Se for 0 não atualiza e guarda a ultima alteração
 		player_sprite.flip_h = (direction == -1)  # Se a direção for esquerda liga o flip na horizontal
-	
+		flip_weapon_pos_h(direction == -1)
+		
 	if is_on_floor():
 		if velocity == Vector2.ZERO:
 			animation_player.play('idle')
@@ -92,6 +90,16 @@ func animation_updater():
 				animation_player.pause() 
 		else:  # A descer
 			animation_player.play('fall')
+
+func flip_weapon_pos_h(looking_left):	
+	if looking_left:
+		weapon_position_father.position.x = -7
+	else:
+		weapon_position_father.position.x = 5
+
+func exit_ladder():
+	is_on_ladder = false 
+	jumps_available = 0
 
 func _on_ladder_check_body_entered(_body):
 	is_near_ladder = true
