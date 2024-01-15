@@ -17,6 +17,9 @@ var direction : float  # Input do utilizador (direção no X)
 var jumps_available : int = 0
 var is_near_ladder : bool = false
 var is_on_ladder : bool = false
+var is_near_valve : bool = false
+var valve_nearby : Area2D = null
+var can_fix_color : String = ''
 
 func _process(_delta):
 	direction = Input.get_axis('move_left', 'move_right')
@@ -106,3 +109,11 @@ func _on_ladder_check_body_entered(_body):
 	
 func _on_ladder_check_body_exited(_body):
 	is_near_ladder = false
+
+func _on_valve_check_area_entered(area):
+	is_near_valve = true
+	valve_nearby = area
+
+func _on_valve_check_area_exited(area):
+	is_near_valve = false
+	valve_nearby = null
