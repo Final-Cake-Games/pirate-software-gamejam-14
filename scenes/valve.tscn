@@ -32,12 +32,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="valve" type="Area2D"]
+[node name="Valve" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_sf3vd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_qcsqe")
 animation = &"closing"
 frame_progress = 0.484719
