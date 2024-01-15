@@ -19,6 +19,7 @@ var is_near_ladder : bool = false
 var is_on_ladder : bool = false
 var is_near_valve : bool = false
 var valve_nearby : Area2D = null
+var fixing : bool = false
 var can_fix_color : String = ''
 
 func _process(_delta):
@@ -75,9 +76,11 @@ func animation_updater():
 	if direction != 0:  # Se for 0 não atualiza e guarda a ultima alteração
 		player_sprite.flip_h = (direction == -1)  # Se a direção for esquerda liga o flip na horizontal
 		flip_weapon_pos_h(direction == -1)
-		
+	
 	if is_on_floor():
-		if velocity == Vector2.ZERO:
+		if fixing:
+			animation_player.play('fixing')
+		elif velocity == Vector2.ZERO:
 			animation_player.play('idle')
 		else:
 			animation_player.play('run')
