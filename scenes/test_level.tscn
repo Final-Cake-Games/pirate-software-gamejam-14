@@ -42,11 +42,12 @@ rotation = 0.867245
 
 [node name="sewage_water_spreading" parent="." instance=ExtResource("8_xe7oh")]
 position = Vector2(465, 263)
+amount = 500
 
 [node name="Valves" type="Node" parent="."]
 
 [node name="WaterValve" parent="Valves" instance=ExtResource("10_nx6s4")]
-position = Vector2(121, 300)
+position = Vector2(367, 300)
 FIX_TIME = 5.0
 
 [node name="Water" parent="." instance=ExtResource("9_rlkdx")]
