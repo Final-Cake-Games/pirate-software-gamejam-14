@@ -18,18 +18,19 @@ func _process(_delta):
 	if is_getting_fixed && !is_fixed:
 		get_fixed()
 	else:
+		if is_fixed:
+			progress_time.stop()
+		else:
+			progress_time.paused = true
+		
 		idle()	
 	
 func get_fixed():
-	if is_fixed:
-		print('valve fixed!')
-		return
 	print('fixing valve...')
 	animation.play('closing')
 	progress_time.paused = false
 	
 func idle():
-	progress_time.paused = true
 	animation.play('default')
 
 func _on_progress_timeout():
