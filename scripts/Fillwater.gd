@@ -1,8 +1,12 @@
 extends Area2D
 
-var MaxSize = 200.0
-var velocity = 0.001  
+@export var MAX_HEIGHT : float = 200.0
+@export var RISE_SPEED : float = 0.05  
+
+var is_rising : bool = true
 
 func _process(delta):
-	scale.y += velocity * delta
+	
+	if is_rising && scale.y < MAX_HEIGHT:
+		scale.y += RISE_SPEED * delta
 		
