@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://dk2mb31yfk7vf"]
+
+[ext_resource type="Texture2D" uid="uid://cng0fp1mcq0da" path="res://assets/Cockroach/Animations/CockroachAwakens/CockRoachAwakens.png" id="1_xh5q0"]
+[ext_resource type="Texture2D" uid="uid://cuyt1ebjvxbym" path="res://assets/Cockroach/Animations/Walk/CockroachWalk.png" id="2_ejmwa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogxpt"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok02l"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kyni"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ictvx"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3knvf"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uq43"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsl2j"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daulb"]
+atlas = ExtResource("1_xh5q0")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crhbb"]
+atlas = ExtResource("2_ejmwa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50mm1"]
+atlas = ExtResource("2_ejmwa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o72ld"]
+atlas = ExtResource("2_ejmwa")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2asjs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogxpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok02l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kyni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ictvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3knvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uq43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsl2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daulb")
+}],
+"loop": false,
+"name": &"awake",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crhbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50mm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o72ld")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="EnemyRoach" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2asjs")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.65613
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
