@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8v6t1lkk3nv8"]
+[gd_scene load_steps=17 format=3 uid="uid://8v6t1lkk3nv8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0awtb"]
 [ext_resource type="Texture2D" uid="uid://b2s2ikkrsxird" path="res://assets/player_assets/animations/Walk/walkanim.png" id="2_1sgy2"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bbsgcg1mbpmug" path="res://assets/player_assets/animations/Jump/jumpanim.png" id="2_bslii"]
 [ext_resource type="Texture2D" uid="uid://dldtkgnl07djs" path="res://assets/player_assets/animations/Climb/ClimbAnim.png" id="2_umxuk"]
 [ext_resource type="Texture2D" uid="uid://d13yhswid7eij" path="res://assets/player_assets/animations/Fall/FallAnim.png" id="2_wnxk6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86hcp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d6dx"]
 size = Vector2(10, 26)
@@ -313,6 +315,14 @@ position = Vector2(5, 0)
 [node name="WeaponPos" type="Marker2D" parent="Node2D"]
 position = Vector2(5, -6)
 
+[node name="ValveCheck" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ValveCheck"]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_86hcp")
+
 [node name="LadderCheck" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
@@ -345,5 +355,7 @@ drag_vertical_enabled = true
 drag_horizontal_offset = 1.0
 drag_vertical_offset = 1.0
 
+[connection signal="area_entered" from="ValveCheck" to="." method="_on_valve_check_area_entered"]
+[connection signal="area_exited" from="ValveCheck" to="." method="_on_valve_check_area_exited"]
 [connection signal="body_entered" from="LadderCheck" to="." method="_on_ladder_check_body_entered"]
 [connection signal="body_exited" from="LadderCheck" to="." method="_on_ladder_check_body_exited"]
