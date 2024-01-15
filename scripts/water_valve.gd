@@ -14,7 +14,6 @@ func _ready():
 	progress_time.start()
 
 func _process(_delta):
-	print(progress_time.time_left)
 	if is_getting_fixed && !is_fixed:
 		get_fixed()
 	else:
