@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=10 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dobs8dph3c6j6" path="res://scenes/plumber_tool.tscn" id="5_t0i53"]
 [ext_resource type="PackedScene" uid="uid://c07kvstx5o1ih" path="res://scenes/pipes_tile_map.tscn" id="7_qprlw"]
 [ext_resource type="PackedScene" uid="uid://bmgw3p3t45vjj" path="res://scenes/sewage_water_spreading.tscn" id="8_xe7oh"]
+[ext_resource type="PackedScene" uid="uid://nfkkds3x475i" path="res://scenes/water.tscn" id="9_rlkdx"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_tjh8e")
@@ -36,3 +37,7 @@ rotation = 0.867245
 
 [node name="sewage_water_spreading" parent="." instance=ExtResource("8_xe7oh")]
 position = Vector2(465, 263)
+
+[node name="Water" parent="." instance=ExtResource("9_rlkdx")]
+position = Vector2(239, 321)
+scale = Vector2(2.64, 1e-05)
