@@ -9,10 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://c07kvstx5o1ih" path="res://scenes/pipes_tile_map.tscn" id="7_qprlw"]
 [ext_resource type="PackedScene" uid="uid://bmgw3p3t45vjj" path="res://scenes/sewage_water_spreading.tscn" id="8_xe7oh"]
 [ext_resource type="PackedScene" uid="uid://nfkkds3x475i" path="res://scenes/water.tscn" id="9_rlkdx"]
-[ext_resource type="PackedScene" uid="uid://cbcgl0jlsfk22" path="res://scenes/valve.tscn" id="10_nx6s4"]
+[ext_resource type="PackedScene" uid="uid://cbcgl0jlsfk22" path="res://scenes/water_valve.tscn" id="10_nx6s4"]
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel" type="Node2D" node_paths=PackedStringArray("sewage_source", "water_level")]
 script = ExtResource("1_tjh8e")
+sewage_source = NodePath("sewage_water_spreading")
+water_level = NodePath("Water")
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -41,10 +43,17 @@ rotation = 0.867245
 [node name="sewage_water_spreading" parent="." instance=ExtResource("8_xe7oh")]
 position = Vector2(465, 263)
 
+[node name="Valves" type="Node" parent="."]
+
+[node name="WaterValve" parent="Valves" instance=ExtResource("10_nx6s4")]
+position = Vector2(121, 300)
+FIX_TIME = 5.0
+
+[node name="WaterValve2" parent="Valves" instance=ExtResource("10_nx6s4")]
+position = Vector2(188, 305)
+FIX_TIME = 3.0
+
 [node name="Water" parent="." instance=ExtResource("9_rlkdx")]
 position = Vector2(239, 321)
 scale = Vector2(2.64, 1e-05)
 MAX_HEIGHT = 12.0
-
-[node name="Valve" parent="." instance=ExtResource("10_nx6s4")]
-position = Vector2(484, 243)
