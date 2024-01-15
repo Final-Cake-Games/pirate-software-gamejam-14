@@ -150,6 +150,5 @@ physics_layer_0/collision_mask = 10
 sources/2 = SubResource("TileSetAtlasSource_edy1e")
 
 [node name="PipesTileMap" type="TileMap"]
-z_index = 10
 tile_set = SubResource("TileSet_6lo24")
 format = 2
