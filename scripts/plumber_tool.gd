@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @export var THROW_STR : float = 1500
 
+@onready var collision_shape : CollisionShape2D = $CollisionShape2D
+
 var player : CharacterBody2D 
 var picked_up : bool = false
 var can_be_picked_up : bool = false
@@ -18,6 +20,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if picked_up == true:
+		collision_shape.disabled = true
 		player.can_fix_color = tool_fix_color
 		position = player.get_child(0).get_child(0).global_position
 		smoothed_mouse_pos = lerp(smoothed_mouse_pos, get_global_mouse_position(), 0.3)
@@ -34,6 +37,7 @@ func _physics_process(delta):
 			picked_up = false
 			apply_impulse(Vector2(0, 1))
 	else:
+		collision_shape.disabled = false
 		player.can_fix_color = ''
 
 func _on_pick_up_detect_body_entered(body):
