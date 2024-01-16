@@ -9,6 +9,8 @@ extends CharacterBody2D
 var dir : float 
 var going_right : bool
 var _state : String
+var player_in_range : bool = false
+var last_known_player_dir : float 
 
 func _ready():
 	dir = randomize_dir()
@@ -26,42 +28,55 @@ func _process(delta):
 	update_raycast_dir()
 
 func _physics_process(delta):
-	print(velocity.x)
-	
-	
+	print(last_known_player_dir)
+	move_and_slide()
 	if !is_on_floor():
 		velocity.y += 450
 		
 	match _state:
 		'IDLE':
 			velocity.x = 0
-			print(_state)
-			await get_tree().create_timer(5).timeout
-			_state = 'MOVING'
+			await get_tree().create_timer(randi_range(2, 12)).timeout
+			if player_in_range:	
+				_state = 'FIGHT'
+			else:
+				_state = 'MOVING'
 		
 		'MOVING':
-			move_and_slide()
 			velocity.x = dir * MOVE_SPEED
+			
 			if going_right:
 				dir = 1
 			else:
 				dir = -1
-				
+			
+			if player_in_range:
+				_state = 'FIGHT'	
+			
 			if raycast.is_colliding():
-				if raycast.get_collider().name != 'Player':
-					dir = update_dir()
-					update_raycast_dir()
-				else:
-					velocity.x = 0
-					_state = 'FIGHT'
-			print(_state)
+				dir = update_dir()
+				update_raycast_dir()
 			
 		'FIGHT':
 			velocity.x = 0
-			if !raycast.is_colliding():
+			sprite.flip_h = (dir != last_known_player_dir)
+			if dir != last_known_player_dir && last_known_player_dir != 0:
+					dir = update_dir()
+					update_raycast_dir()
+			if !player_in_range:
 				_state = 'IDLE'
-	
 			
+	
+func do_dmg():
+	print('dmg player')
+	await get_tree().create_timer(3).timeout
+	
+	if raycast.is_colliding() && raycast.get_collider().name == 'Player':
+		do_dmg()
+	else:
+		_state = 'IDLE'
+		return
+		
 func update_dir():
 	if going_right == true: 
 		going_right = false
@@ -95,3 +110,9 @@ func update_animations():
 			if sprite.frame == 10:
 				animations.pause()
 	
+func _on_area_2d_body_entered(body):
+	last_known_player_dir = round((global_position.direction_to(body.global_position)).x)
+	player_in_range = true
+
+func _on_area_2d_body_exited(body):
+	player_in_range = false
