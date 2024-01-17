@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk2mb31yfk7vf"]
+[gd_scene load_steps=20 format=3 uid="uid://dk2mb31yfk7vf"]
 
 [ext_resource type="Script" path="res://scripts/enemy_roach.gd" id="1_54ono"]
 [ext_resource type="Texture2D" uid="uid://cng0fp1mcq0da" path="res://assets/Cockroach/Animations/CockroachAwakens/CockRoachAwakens.png" id="1_xh5q0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cvubac0lfncdb" path="res://assets/Cockroach/Animations/Idle/CockroachIdle.png" id="2_ixwg8"]
 [ext_resource type="Script" path="res://scripts/roach_state_machine.gd" id="5_ocg1l"]
 [ext_resource type="Script" path="res://scripts/roach_roaming_state.gd" id="7_a23js"]
+[ext_resource type="Script" path="res://scripts/roach_chase_state.gd" id="8_onn5t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrly8"]
 radius = 3.63636
@@ -431,15 +432,16 @@ _data = {
 "walk": SubResource("Animation_q36x1")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4rio"]
+radius = 61.131
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmaav"]
+size = Vector2(46, 23)
+
 [node name="EnemyRoach" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 11
 script = ExtResource("1_54ono")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -5)
-target_position = Vector2(50, 0)
-collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -465,3 +467,26 @@ current_state = NodePath("RoachRoamingState")
 script = ExtResource("7_a23js")
 vessel = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
+
+[node name="RoachChaseState" type="Node" parent="RoachStateMachine" node_paths=PackedStringArray("vessel", "animator")]
+script = ExtResource("8_onn5t")
+vessel = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_s4rio")
+
+[node name="FightRange" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FightRange"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_gmaav")
+
+[connection signal="body_entered" from="DetectionRange" to="RoachStateMachine/RoachRoamingState" method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="RoachStateMachine/RoachChaseState" method="_on_detection_range_body_exited"]
