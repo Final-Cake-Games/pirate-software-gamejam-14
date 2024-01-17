@@ -19,10 +19,11 @@ func _exit_state():
 	set_physics_process(false)
 	
 func _physics_process(delta):
-	player_dir_x = (vessel.global_position.direction_to(player.global_position)).x
+	print(player_dir_x)  # Sometimes -0 or 0 due to player being above
+	player_dir_x = round((vessel.global_position.direction_to(player.global_position)).x)
 	vessel.velocity.x = move_toward(vessel.velocity.x, player_dir_x * vessel.CHASE_SPEED, 2)
 	vessel.move_and_slide()
 
 func _on_detection_range_body_exited(body):
-	vessel.last_known_player_location = round(player_dir_x)
+	vessel.last_known_player_location = player_dir_x
 	lost_player.emit()
