@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk2mb31yfk7vf"]
+[gd_scene load_steps=16 format=3 uid="uid://dk2mb31yfk7vf"]
 
 [ext_resource type="Texture2D" uid="uid://cng0fp1mcq0da" path="res://assets/Cockroach/Animations/CockroachAwakens/CockRoachAwakens.png" id="1_xh5q0"]
 [ext_resource type="Texture2D" uid="uid://b2mi7girbim6c" path="res://assets/Cockroach/Animations/Faint/Coackfaint.png" id="2_bo2to"]
 [ext_resource type="Texture2D" uid="uid://cuyt1ebjvxbym" path="res://assets/Cockroach/Animations/Walk/CockroachWalk.png" id="2_ejmwa"]
 [ext_resource type="Texture2D" uid="uid://cvubac0lfncdb" path="res://assets/Cockroach/Animations/Idle/CockroachIdle.png" id="2_ixwg8"]
+[ext_resource type="Script" path="res://scripts/roach_state_machine.gd" id="5_ocg1l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrly8"]
 radius = 3.63636
@@ -484,3 +485,6 @@ libraries = {
 "": SubResource("AnimationLibrary_esf6p")
 }
 autoplay = "idle"
+
+[node name="RoachStateMachine" type="Node" parent="."]
+script = ExtResource("5_ocg1l")
