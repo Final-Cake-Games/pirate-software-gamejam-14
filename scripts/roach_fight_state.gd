@@ -21,7 +21,9 @@ func _physics_process(delta):
 	pass
 	
 func do_dmg():
-	pass
+	print('+10 dmg')
+	await get_tree().create_timer(3).timeout
+	do_dmg()
 
 func _on_fight_range_body_exited(body):
 	player_left_fight_range.emit()
