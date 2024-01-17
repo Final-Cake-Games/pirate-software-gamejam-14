@@ -6,6 +6,7 @@ var roam_direction : float
 signal saw_player
 
 func _ready():
+		
 	roam_direction = randi_range(-1, 1)  # Randomize start direction
 	
 	if roam_direction == 0: #  Temporarily disalow 0
@@ -16,6 +17,11 @@ func _ready():
 func _enter_state() -> void:
 	set_physics_process(true)  # Only enable when current state is active (roaming)
 	animator.play('walk')
+	
+	if vessel.last_known_player_location != 0:  # set last seen players location as dir
+		roam_direction = vessel.last_known_player_location
+		vessel.last_known_player_location = 0
+		
 	if vessel.velocity.x == 0:  # Start roaming
 		vessel.velocity.x = roam_direction * vessel.ROAM_SPEED
 

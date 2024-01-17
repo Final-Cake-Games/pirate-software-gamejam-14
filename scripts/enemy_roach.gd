@@ -14,6 +14,7 @@ var ROAM_SPEED = 20
 var CHASE_SPEED = 50
 
 var current_direction : Vector2
+var last_known_player_location : float = 0
 
 func _ready():
 	roach_roaming_state.saw_player.connect(roach_state_machine.change_state.bind(roach_chase_state))
@@ -21,7 +22,6 @@ func _ready():
 
 func _process(delta):
 	current_direction = velocity
-	
 	update_sprite_dir()
 	
 func update_sprite_dir():
