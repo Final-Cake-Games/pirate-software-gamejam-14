@@ -21,6 +21,7 @@ var is_near_valve : bool = false
 var valve_nearby : Area2D = null
 var fixing : bool = false
 var can_fix_color : String = ''
+var life : int = 100
 
 func _process(_delta):
 	direction = Input.get_axis('move_left', 'move_right')
@@ -35,6 +36,7 @@ func _process(_delta):
 	animation_updater()
 
 func _physics_process(delta):
+	print(life)
 	move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
 	
 	if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
@@ -102,6 +104,14 @@ func flip_weapon_pos_h(looking_left):
 		weapon_position_father.position.x = -7
 	else:
 		weapon_position_father.position.x = 5
+		
+func take_dmg(amount):
+	life -= amount
+	if life <= 0:
+		die()
+		
+func die():
+	queue_free()
 
 func exit_ladder():
 	is_on_ladder = false 
