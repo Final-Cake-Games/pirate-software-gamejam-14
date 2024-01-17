@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk2mb31yfk7vf"]
+[gd_scene load_steps=18 format=3 uid="uid://dk2mb31yfk7vf"]
 
 [ext_resource type="Script" path="res://scripts/enemy_roach.gd" id="1_54ono"]
 [ext_resource type="Texture2D" uid="uid://cng0fp1mcq0da" path="res://assets/Cockroach/Animations/CockroachAwakens/CockRoachAwakens.png" id="1_xh5q0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cuyt1ebjvxbym" path="res://assets/Cockroach/Animations/Walk/CockroachWalk.png" id="2_ejmwa"]
 [ext_resource type="Texture2D" uid="uid://cvubac0lfncdb" path="res://assets/Cockroach/Animations/Idle/CockroachIdle.png" id="2_ixwg8"]
 [ext_resource type="Script" path="res://scripts/roach_state_machine.gd" id="5_ocg1l"]
+[ext_resource type="Script" path="res://scripts/roach_roaming_state.gd" id="7_a23js"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrly8"]
 radius = 3.63636
@@ -494,5 +495,9 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="RoachStateMachine" type="Node" parent="."]
+[node name="RoachStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("5_ocg1l")
+current_state = NodePath("RoachRoamingState")
+
+[node name="RoachRoamingState" type="Node" parent="RoachStateMachine"]
+script = ExtResource("7_a23js")
