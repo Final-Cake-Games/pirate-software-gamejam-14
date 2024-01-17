@@ -23,6 +23,10 @@ func _exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(delta):
+	if vessel.ray_cast_2d.is_colliding():
+		print('saw u')
+		saw_player.emit()
+		
 	vessel.move_and_slide()
 	
 	update_sprite_dir()
