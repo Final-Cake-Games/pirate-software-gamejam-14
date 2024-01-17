@@ -884,6 +884,8 @@ collision_layer = 16
 collision_mask = 11
 script = ExtResource("1_54ono")
 
+[node name="ReloadTimer" type="Timer" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 rotation = -0.122173
@@ -934,6 +936,7 @@ collision_mask = 2
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_gmaav")
 
+[connection signal="timeout" from="ReloadTimer" to="RoachStateMachine/RoachFightState" method="_on_reload_timer_timeout"]
 [connection signal="body_entered" from="DetectionRange" to="RoachStateMachine/RoachRoamingState" method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="RoachStateMachine/RoachChaseState" method="_on_detection_range_body_exited"]
 [connection signal="body_entered" from="FightRange" to="RoachStateMachine/RoachChaseState" method="_on_fight_range_body_entered"]

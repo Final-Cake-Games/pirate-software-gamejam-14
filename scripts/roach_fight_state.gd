@@ -1,6 +1,8 @@
 class_name RoachFightState
 extends State
 
+@onready var reload_timer = $"../../ReloadTimer"
+
 signal player_left_fight_range
 
 var player : CharacterBody2D
@@ -19,24 +21,31 @@ func _enter_state():
 	
 func _exit_state():
 	set_physics_process(false)
+	reload_timer.stop()
 
 	
 func do_dmg():
+	if player_has_left: return
+	
+	reload_timer.wait_time = 3
+	
 	if (vessel.current_direction.x < 0):
 		animator.play('strike_left')
 	else:
 		animator.play('strike_right')
-		
-	player.take_dmg(10)
 	
 	await animator.animation_finished
+	
+	player.take_dmg(10)
+	
 	animator.play('stand_idle')
-	await get_tree().create_timer(3).timeout
-	if player_has_left:
-		return
-	else:
-		do_dmg()
+	
+	reload_timer.start()
 
 func _on_fight_range_body_exited(body):
 	player_has_left = true
 	player_left_fight_range.emit()
+
+func _on_reload_timer_timeout():
+	if !player_has_left:
+		do_dmg()
