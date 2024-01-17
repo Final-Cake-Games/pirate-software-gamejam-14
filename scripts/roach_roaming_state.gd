@@ -26,6 +26,7 @@ func _physics_process(delta):
 	vessel.move_and_slide()
 	
 	update_sprite_dir()
+	update_raycast_dir()
 	
 	if !vessel.is_on_floor():  # Temp add gravity in roam, make falling state soon
 		vessel.velocity.y += 300
@@ -38,7 +39,13 @@ func _physics_process(delta):
 func update_sprite_dir():
 	if roam_direction != 0:  # Keep sprite facing the right direction
 		vessel.sprite_2d.flip_h = (roam_direction < 0)
-		
+
+func update_raycast_dir():
+	if roam_direction > 0:
+		vessel.ray_cast_2d.target_position.x = 50
+	elif roam_direction < 0:
+		vessel.ray_cast_2d.target_position.x = -50
+
 func flip_roam_dir():
 	if roam_direction > 0:
 		roam_direction = -1
