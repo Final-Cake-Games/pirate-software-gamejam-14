@@ -79,6 +79,9 @@ func animation_updater():
 		player_sprite.flip_h = (direction == -1)  # Se a direção for esquerda liga o flip na horizontal
 		flip_weapon_pos_h(direction == -1)
 	
+	if animation_player.current_animation == 'take_dmg':
+		await animation_player.animation_finished
+	
 	if is_on_floor():
 		if fixing:
 			animation_player.play('fixing')
@@ -106,6 +109,7 @@ func flip_weapon_pos_h(looking_left):
 		weapon_position_father.position.x = 5
 		
 func take_dmg(amount):
+	animation_player.play('take_dmg')
 	life -= amount
 	if life <= 0:
 		die()
