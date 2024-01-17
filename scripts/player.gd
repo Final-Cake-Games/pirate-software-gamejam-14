@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # Referências aos nós necessários para animar
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var take_dmg_player = $take_dmg
 @onready var player_sprite : Sprite2D = $Sprite2D
 @onready var weapon_position_father : Node2D = $Node2D
 
@@ -78,9 +79,7 @@ func animation_updater():
 	if direction != 0:  # Se for 0 não atualiza e guarda a ultima alteração
 		player_sprite.flip_h = (direction == -1)  # Se a direção for esquerda liga o flip na horizontal
 		flip_weapon_pos_h(direction == -1)
-	
-	if animation_player.current_animation == 'take_dmg':
-		await animation_player.animation_finished
+
 	
 	if is_on_floor():
 		if fixing:
@@ -109,7 +108,7 @@ func flip_weapon_pos_h(looking_left):
 		weapon_position_father.position.x = 5
 		
 func take_dmg(amount):
-	animation_player.play('take_dmg')
+	take_dmg_player.play('take_dmg')
 	life -= amount
 	if life <= 0:
 		die()
