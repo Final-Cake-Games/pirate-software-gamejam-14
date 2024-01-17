@@ -27,3 +27,6 @@ func _physics_process(delta):
 func _on_detection_range_body_exited(body):
 	vessel.last_known_player_location = player_dir_x
 	lost_player.emit()
+
+func _on_fight_range_body_entered(body):
+	fight_player.emit()
