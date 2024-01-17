@@ -11,6 +11,8 @@ func _ready():
 func _enter_state():
 	set_physics_process(true) 
 	animator.play('get_triggered')
+	await animator.animation_finished
+	animator.play('stand_idle')
 	player = vessel.fight_area.get_overlapping_bodies()[0]
 	do_dmg()
 	
