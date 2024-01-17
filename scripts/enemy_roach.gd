@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @onready var roach_roaming_state = $RoachStateMachine/RoachRoamingState as RoachRoamingState
 @onready var roach_chase_state = $RoachStateMachine/RoachChaseState as RoachChaseState
+@onready var roach_fight_state = $RoachStateMachine/RoachFightState as RoachFightState
 
 var ROAM_SPEED = 20
 var CHASE_SPEED = 50
@@ -19,6 +20,8 @@ var last_known_player_location : float = 0
 func _ready():
 	roach_roaming_state.saw_player.connect(roach_state_machine.change_state.bind(roach_chase_state))
 	roach_chase_state.lost_player.connect(roach_state_machine.change_state.bind(roach_roaming_state))
+	roach_chase_state.fight_player.connect(roach_state_machine.change_state.bind(roach_fight_state))
+	roach_fight_state.player_left_fight_range.connect(roach_state_machine.change_state.bind(roach_chase_state))
 
 func _process(delta):
 	current_direction = velocity
