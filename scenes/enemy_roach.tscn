@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dk2mb31yfk7vf"]
+[gd_scene load_steps=21 format=3 uid="uid://dk2mb31yfk7vf"]
 
 [ext_resource type="Script" path="res://scripts/enemy_roach.gd" id="1_54ono"]
 [ext_resource type="Texture2D" uid="uid://cng0fp1mcq0da" path="res://assets/Cockroach/Animations/CockroachAwakens/CockRoachAwakens.png" id="1_xh5q0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/roach_state_machine.gd" id="5_ocg1l"]
 [ext_resource type="Script" path="res://scripts/roach_roaming_state.gd" id="7_a23js"]
 [ext_resource type="Script" path="res://scripts/roach_chase_state.gd" id="8_onn5t"]
+[ext_resource type="Script" path="res://scripts/roach_fight_state.gd" id="9_osa0a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrly8"]
 radius = 3.63636
@@ -473,6 +474,11 @@ script = ExtResource("8_onn5t")
 vessel = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 
+[node name="RoachFightState" type="Node" parent="RoachStateMachine" node_paths=PackedStringArray("vessel", "animator")]
+script = ExtResource("9_osa0a")
+vessel = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 2
@@ -490,3 +496,5 @@ shape = SubResource("RectangleShape2D_gmaav")
 
 [connection signal="body_entered" from="DetectionRange" to="RoachStateMachine/RoachRoamingState" method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="RoachStateMachine/RoachChaseState" method="_on_detection_range_body_exited"]
+[connection signal="body_entered" from="FightRange" to="RoachStateMachine/RoachChaseState" method="_on_fight_range_body_entered"]
+[connection signal="body_exited" from="FightRange" to="RoachStateMachine/RoachFightState" method="_on_fight_range_body_exited"]
