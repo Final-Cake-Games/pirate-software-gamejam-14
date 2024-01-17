@@ -111,7 +111,8 @@ func take_dmg(amount):
 		die()
 		
 func die():
-	queue_free()
+	pass
+	#queue_free()
 
 func exit_ladder():
 	is_on_ladder = false 
