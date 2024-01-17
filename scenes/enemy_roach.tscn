@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk2mb31yfk7vf"]
+[gd_scene load_steps=16 format=3 uid="uid://dk2mb31yfk7vf"]
 
-[ext_resource type="Script" path="res://scripts/enemy_roach.gd" id="1_54ono"]
 [ext_resource type="Texture2D" uid="uid://cng0fp1mcq0da" path="res://assets/Cockroach/Animations/CockroachAwakens/CockRoachAwakens.png" id="1_xh5q0"]
 [ext_resource type="Texture2D" uid="uid://b2mi7girbim6c" path="res://assets/Cockroach/Animations/Faint/Coackfaint.png" id="2_bo2to"]
 [ext_resource type="Texture2D" uid="uid://cuyt1ebjvxbym" path="res://assets/Cockroach/Animations/Walk/CockroachWalk.png" id="2_ejmwa"]
@@ -532,7 +531,6 @@ size = Vector2(46, 23)
 [node name="EnemyRoach" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 11
-script = ExtResource("1_54ono")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -563,6 +561,3 @@ collision_mask = 2
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_el61t")
 disabled = true
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
