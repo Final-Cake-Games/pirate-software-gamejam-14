@@ -19,6 +19,7 @@ func _ready():
 
 func _process(delta):
 	if !water_level.is_rising || player.player_dead:
+		player.player_dead = true #  Freeze player
 		print('game over')
 	
 	#Lógica da subida de água e fecho do esgoto
