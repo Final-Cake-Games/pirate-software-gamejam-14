@@ -388,7 +388,6 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 z_index = 500
 collision_layer = 2
-collision_mask = 17
 script = ExtResource("1_0awtb")
 
 [node name="Node2D" type="Node2D" parent="."]
