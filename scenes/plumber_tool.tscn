@@ -15,7 +15,7 @@ radius = 4.0
 height = 22.0
 
 [node name="PlumberTool" type="RigidBody2D"]
-z_index = 500
+z_index = 550
 collision_layer = 8
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_lmted")
