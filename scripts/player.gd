@@ -22,45 +22,49 @@ var is_near_valve : bool = false
 var valve_nearby : Area2D = null
 var fixing : bool = false
 var can_fix_color : String = ''
+var player_dead : bool = false
 var life : int = 100
 
 func _process(_delta):
-	direction = Input.get_axis('move_left', 'move_right')
-	if Input.is_action_just_pressed('jump') && jumps_available > 0:
-		jump()
-	
-	if is_near_ladder && (Input.is_action_just_pressed('climb_up') || Input.is_action_just_pressed('climb_down')):
-		is_on_ladder = true
-	if !is_near_ladder:
-		is_on_ladder = false
-			
-	animation_updater()
+	if !player_dead:
+		direction = Input.get_axis('move_left', 'move_right')
+		if Input.is_action_just_pressed('jump') && jumps_available > 0:
+			jump()
+		
+		if is_near_ladder && (Input.is_action_just_pressed('climb_up') || Input.is_action_just_pressed('climb_down')):
+			is_on_ladder = true
+		if !is_near_ladder:
+			is_on_ladder = false
+				
+		animation_updater()
 
 func _physics_process(delta):
 	print(life)
-	move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
-	
-	if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
-		velocity.y += GRAVITY * delta
-	
-	if is_on_floor():  # Se está dá reset aos saltos
-		jumps_available = MAX_JUMPS
-	
-	# Lógica de andar/parar na !!horizontal!!
-	if direction != 0:  # Estamos a começar a andar
-		if is_on_ladder:  # Sai da escada se andar na horizontal nela
-			exit_ladder()
-			
-		velocity.x = direction * MAX_SPEED  # Aplica velocidade máxima imediatamente
-	else:  # Estamos a parar
-		velocity.x = move_toward(velocity.x, 0, 30)  # Abranda até 0 de 30 em 30 unidades
-	
-	# Lógica de subir/descer escadas	
-	if is_on_ladder:
-		velocity.y = Input.get_axis('climb_up', 'climb_down') * CLIMB_SPEED
+	if !player_dead:
+		move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
 		
-		if is_near_ladder == false:  # Sai da escada se subir toda
-			exit_ladder()	
+		if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
+			velocity.y += GRAVITY * delta
+		
+		if is_on_floor():  # Se está dá reset aos saltos
+			jumps_available = MAX_JUMPS
+		
+		# Lógica de andar/parar na !!horizontal!!
+		if direction != 0:  # Estamos a começar a andar
+			if is_on_ladder:  # Sai da escada se andar na horizontal nela
+				exit_ladder()
+				
+			velocity.x = direction * MAX_SPEED  # Aplica velocidade máxima imediatamente
+		else:  # Estamos a parar
+			velocity.x = move_toward(velocity.x, 0, 30)  # Abranda até 0 de 30 em 30 unidades
+		
+		# Lógica de subir/descer escadas	
+		if is_on_ladder:
+			velocity.y = Input.get_axis('climb_up', 'climb_down') * CLIMB_SPEED
+			
+			if is_near_ladder == false:  # Sai da escada se subir toda
+				exit_ladder()	
+	
 	
 func jump(): 
 	if is_on_ladder:  # Sai da escada se tentar saltar nela
@@ -108,14 +112,15 @@ func flip_weapon_pos_h(looking_left):
 		weapon_position_father.position.x = 5
 		
 func take_dmg(amount):
-	take_dmg_player.play('take_dmg')
-	life -= amount
-	if life <= 0:
-		die()
+	if !player_dead:
+		take_dmg_player.play('take_dmg')
+		life -= amount
+		if life <= 0:
+			die()
 		
 func die():
-	pass
-	#queue_free()
+	player_dead = true
+	animation_player.play('die')
 
 func exit_ladder():
 	is_on_ladder = false 
