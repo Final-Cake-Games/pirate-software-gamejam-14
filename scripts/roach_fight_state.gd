@@ -38,14 +38,15 @@ func _physics_process(delta):
 		animator.play('stand_idle')
 
 func do_dmg():
-	recent_attack = true
-	reload_timer.start()
-	if (vessel.player_dir.x < 0):
-		animator.play('strike_left')
-	else:
-		animator.play('strike_right')
-	vessel.player_target.take_dmg(10)
-	await animator.animation_finished
+	if !vessel.player_target.player_dead:
+		recent_attack = true
+		reload_timer.start()
+		if (vessel.player_dir.x < 0):
+			animator.play('strike_left')
+		else:
+			animator.play('strike_right')
+		vessel.player_target.take_dmg(10)
+		await animator.animation_finished
 	
 func _on_reload_timer_timeout():
 	recent_attack = false
