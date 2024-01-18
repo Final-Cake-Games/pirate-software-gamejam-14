@@ -6,7 +6,7 @@ extends State
 signal player_left_fight_range
 
 var player : CharacterBody2D
-var player_has_left : bool 
+var player_has_left : bool
 
 func _ready():
 	set_physics_process(false)
@@ -21,12 +21,17 @@ func _enter_state():
 	
 func _exit_state():
 	set_physics_process(false)
+	player = null
 	reload_timer.stop()
-
 	
+func _process(delta):
+	if vessel.dead:
+		_exit_state()
+
 func do_dmg():
 	if player_has_left: return
 	
+	reload_timer.stop()
 	reload_timer.wait_time = 3
 	
 	if (vessel.current_direction.x < 0):

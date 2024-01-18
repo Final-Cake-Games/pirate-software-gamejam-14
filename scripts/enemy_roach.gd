@@ -17,6 +17,7 @@ signal roach_die
 
 var ROAM_SPEED = 20
 var CHASE_SPEED = 50
+var dead = false
 
 var current_direction : Vector2
 var last_known_player_location : float = 0
