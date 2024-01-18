@@ -20,7 +20,7 @@ func _process(delta):
 			picked_up = true
 
 func _physics_process(delta):
-	can_kill = (linear_velocity.x > 150 || linear_velocity.y > 150 || linear_velocity.x < -150 || linear_velocity.y < -150)
+	can_kill = (linear_velocity.x > 100 || linear_velocity.y > 100 || linear_velocity.x < -100 || linear_velocity.y < -100)
 			
 	if picked_up == true:
 		collision_shape.disabled = true
