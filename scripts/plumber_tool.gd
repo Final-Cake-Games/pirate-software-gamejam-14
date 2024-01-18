@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	if can_be_picked_up:
-		if Input.is_action_just_pressed('pick_up'):
+		if Input.is_action_just_pressed('pick_up') && !player.player_dead:
 			picked_up = true
 
 func _physics_process(delta):
@@ -36,7 +36,7 @@ func _physics_process(delta):
 			var trow_dir = player.global_position.direction_to(get_global_mouse_position())
 			apply_impulse(trow_dir * THROW_STR)
 		
-		if Input.is_action_just_pressed('drop_item'):
+		if Input.is_action_just_pressed('drop_item') || player.player_dead:
 			picked_up = false
 			apply_impulse(Vector2(0, 1))
 	else:
