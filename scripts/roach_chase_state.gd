@@ -3,6 +3,7 @@ extends State
 
 signal lost_player
 signal fight_player
+signal roach_die
 
 var player_dir_x : float
 var player : CharacterBody2D
@@ -25,8 +26,10 @@ func _physics_process(delta):
 	vessel.move_and_slide()
 
 func _on_detection_range_body_exited(body):
-	vessel.last_known_player_location = player_dir_x
-	lost_player.emit()
+	if !vessel.dead:
+		vessel.last_known_player_location = player_dir_x
+		lost_player.emit()
 
 func _on_fight_range_body_entered(body):
-	fight_player.emit()
+	if !vessel.dead:
+		fight_player.emit()

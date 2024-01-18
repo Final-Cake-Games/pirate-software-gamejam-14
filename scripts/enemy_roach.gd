@@ -1,8 +1,6 @@
 class_name  EnemyRoach
 extends CharacterBody2D
 
-signal roach_die
-
 @onready var sprite_2d = $Sprite2D
 @onready var detection_area = $DetectionRange
 @onready var fight_area = $FightRange
@@ -27,9 +25,13 @@ func _ready():
 	roach_chase_state.lost_player.connect(roach_state_machine.change_state.bind(roach_roaming_state))
 	roach_chase_state.fight_player.connect(roach_state_machine.change_state.bind(roach_fight_state))
 	roach_fight_state.player_left_fight_range.connect(roach_state_machine.change_state.bind(roach_chase_state))
-	roach_die.connect(roach_state_machine.change_state.bind(roach_die_state))
+	
+	roach_roaming_state.roach_die.connect(roach_state_machine.change_state.bind(roach_die_state))
+	roach_chase_state.roach_die.connect(roach_state_machine.change_state.bind(roach_die_state))
+	roach_fight_state.roach_die.connect(roach_state_machine.change_state.bind(roach_die_state))
 
 func _process(delta):
+	print(dead)
 	current_direction = velocity
 	update_sprite_dir()
 	
@@ -38,5 +40,5 @@ func update_sprite_dir():
 		sprite_2d.flip_h = (current_direction.x < 0)
 		
 func die():
-	roach_die.emit()
+	roach_state_machine.current_state.roach_die.emit()
 

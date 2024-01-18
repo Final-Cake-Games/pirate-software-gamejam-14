@@ -4,6 +4,7 @@ extends State  # inherits all of State class propreties and methods
 var roam_direction : float
 
 signal saw_player
+signal roach_die
 
 func _ready():
 		
@@ -46,4 +47,5 @@ func flip_roam_dir():
 		roam_direction = 1
 
 func _on_detection_range_body_entered(body):
-	saw_player.emit()
+	if !vessel.dead:
+		saw_player.emit()
