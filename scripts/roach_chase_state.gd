@@ -26,7 +26,7 @@ func _physics_process(delta):
 	if !vessel.is_on_floor():  # Temp add gravity in roam, make falling state soon
 		vessel.velocity.y += vessel.GRAVITY * delta
 		
-	if ((vessel.is_on_wall() && vessel.is_on_floor()) || (vessel.player_dir.y == -1 && vessel.is_on_floor())):
+	if ((vessel.is_on_wall() && vessel.is_on_floor()) || (vessel.player_dir.y == -1 && vessel.is_on_wall() && vessel.is_on_floor())):
 		jump()
 
 func jump():
