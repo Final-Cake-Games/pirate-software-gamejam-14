@@ -19,9 +19,8 @@ func _enter_state() -> void:
 	set_physics_process(true)  # Only enable when current state is active (roaming)
 	animator.play('walk')
 	
-	if vessel.last_known_player_location != 0:  # set last seen players location as dir
-		roam_direction = vessel.last_known_player_location
-		vessel.last_known_player_location = 0
+	if vessel.player_dir.x != 0:  # set last seen players location as dir
+		roam_direction = vessel.player_dir.x
 		
 	if vessel.velocity.x == 0:  # Start roaming
 		vessel.velocity.x = roam_direction * vessel.ROAM_SPEED
@@ -33,7 +32,7 @@ func _physics_process(delta):
 	vessel.move_and_slide()
 	
 	if !vessel.is_on_floor():  # Temp add gravity in roam, make falling state soon
-		vessel.velocity.y += 300
+		vessel.velocity.y += vessel.GRAVITY * delta
 	
 	if vessel.is_on_wall():
 		flip_roam_dir()
