@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dk2mb31yfk7vf"]
+[gd_scene load_steps=25 format=3 uid="uid://dk2mb31yfk7vf"]
 
 [ext_resource type="Script" path="res://scripts/enemy_roach.gd" id="1_54ono"]
 [ext_resource type="Texture2D" uid="uid://cng0fp1mcq0da" path="res://assets/Cockroach/Animations/CockroachAwakens/CockRoachAwakens.png" id="1_xh5q0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/roach_roaming_state.gd" id="7_a23js"]
 [ext_resource type="Script" path="res://scripts/roach_chase_state.gd" id="8_onn5t"]
 [ext_resource type="Script" path="res://scripts/roach_fight_state.gd" id="9_osa0a"]
+[ext_resource type="Script" path="res://scripts/roach_die_state.gd" id="10_p0g8w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrly8"]
 radius = 3.63636
@@ -917,6 +918,11 @@ animator = NodePath("../../AnimationPlayer")
 
 [node name="RoachFightState" type="Node" parent="RoachStateMachine" node_paths=PackedStringArray("vessel", "animator")]
 script = ExtResource("9_osa0a")
+vessel = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+
+[node name="RoachDieState" type="Node" parent="RoachStateMachine" node_paths=PackedStringArray("vessel", "animator")]
+script = ExtResource("10_p0g8w")
 vessel = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 

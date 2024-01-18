@@ -51,4 +51,4 @@ func _on_pick_up_detect_body_exited(body):
 
 func _on_kill_detect_body_entered(body):
 	if can_kill:
-		print(body, ' died!')
+		body.die()
