@@ -11,6 +11,8 @@ gradient = ExtResource("2_7m7o6")
 
 [node name="Water" type="Area2D"]
 z_index = 600
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_7cxln")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,3 +25,11 @@ position = Vector2(0, -10)
 rotation = -1.5708
 scale = Vector2(0.0800007, 202.792)
 texture = SubResource("GradientTexture1D_381p0")
+
+[node name="DmgTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="DmgTimer" to="." method="_on_dmg_timer_timeout"]
