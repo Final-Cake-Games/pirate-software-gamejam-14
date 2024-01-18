@@ -34,9 +34,6 @@ position = Vector2(237, -65)
 scale = Vector2(1.0625, 1.07353)
 texture = ExtResource("2_6g3pb")
 
-[node name="Player" parent="." instance=ExtResource("3_gw6fe")]
-position = Vector2(78, 304)
-
 [node name="PlumberTool" parent="." instance=ExtResource("5_t0i53")]
 position = Vector2(50, 133)
 rotation = 0.867245
@@ -58,3 +55,6 @@ MAX_HEIGHT = 12.0
 
 [node name="EnemyRoach" parent="." instance=ExtResource("11_1ga41")]
 position = Vector2(144, 301)
+
+[node name="Player" parent="." instance=ExtResource("3_gw6fe")]
+position = Vector2(22, 243)
