@@ -6,7 +6,6 @@ signal fight_player
 signal roach_die
 
 var player_dir_x : float
-var player : CharacterBody2D
 
 func _ready():
 	set_physics_process(false)
@@ -14,14 +13,14 @@ func _ready():
 func _enter_state() -> void:
 	set_physics_process(true) 
 	animator.play('walk')
-	player = vessel.detection_area.get_overlapping_bodies()[0]
+	vessel.player_target = vessel.detection_area.get_overlapping_bodies()[0]
 
 func _exit_state():
 	set_physics_process(false)
 	
 func _physics_process(delta):
 	#print(player_dir_x)  # Sometimes -0 or 0 due to player being above
-	player_dir_x = round((vessel.global_position.direction_to(player.global_position)).x)
+	player_dir_x = round((vessel.global_position.direction_to(vessel.player_target.global_position)).x)
 	vessel.velocity.x = move_toward(vessel.velocity.x, player_dir_x * vessel.CHASE_SPEED, 2)
 	vessel.move_and_slide()
 

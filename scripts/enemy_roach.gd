@@ -19,6 +19,7 @@ var dead = false
 
 var current_direction : Vector2
 var last_known_player_location : float = 0
+var player_target : CharacterBody2D
 
 func _ready():
 	roach_roaming_state.saw_player.connect(roach_state_machine.change_state.bind(roach_chase_state))
@@ -31,7 +32,6 @@ func _ready():
 	roach_fight_state.roach_die.connect(roach_state_machine.change_state.bind(roach_die_state))
 
 func _process(delta):
-	print(dead)
 	current_direction = velocity
 	update_sprite_dir()
 	
