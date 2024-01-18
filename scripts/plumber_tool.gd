@@ -9,6 +9,7 @@ var picked_up : bool = false
 var can_be_picked_up : bool = false
 var smoothed_mouse_pos : Vector2
 var tool_fix_color = 'RED'
+var can_kill : bool = false
 
 func _ready():
 	player = get_node('../Player')
@@ -19,6 +20,8 @@ func _process(delta):
 			picked_up = true
 
 func _physics_process(delta):
+	can_kill = (linear_velocity.x > 150 || linear_velocity.y > 150 || linear_velocity.x < -150 || linear_velocity.y < -150)
+			
 	if picked_up == true:
 		collision_shape.disabled = true
 		player.can_fix_color = tool_fix_color
@@ -45,3 +48,7 @@ func _on_pick_up_detect_body_entered(body):
 
 func _on_pick_up_detect_body_exited(body):
 	can_be_picked_up = false
+
+func _on_kill_detect_body_entered(body):
+	if can_kill:
+		print(body, ' died!')

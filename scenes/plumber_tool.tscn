@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dobs8dph3c6j6"]
+[gd_scene load_steps=7 format=3 uid="uid://dobs8dph3c6j6"]
 
 [ext_resource type="Script" path="res://scripts/plumber_tool.gd" id="1_bwqqy"]
 [ext_resource type="Texture2D" uid="uid://mxb48bv87fm2" path="res://assets/player_assets/items/PlumberKey.png" id="1_xm0m8"]
@@ -14,9 +14,13 @@ size = Vector2(3, 15)
 radius = 4.0
 height = 22.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r2yr"]
+size = Vector2(17, 5)
+
 [node name="PlumberTool" type="RigidBody2D"]
 z_index = 550
 collision_layer = 8
+collision_mask = 17
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_lmted")
 script = ExtResource("1_bwqqy")
@@ -41,5 +45,14 @@ collision_mask = 2
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_cgiri")
 
+[node name="KillDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillDetect"]
+position = Vector2(4.5, 0.5)
+shape = SubResource("RectangleShape2D_4r2yr")
+
 [connection signal="body_entered" from="PickUpDetect" to="." method="_on_pick_up_detect_body_entered"]
 [connection signal="body_exited" from="PickUpDetect" to="." method="_on_pick_up_detect_body_exited"]
+[connection signal="body_entered" from="KillDetect" to="." method="_on_kill_detect_body_entered"]
