@@ -18,10 +18,11 @@ func _ready():
 	level_valves_arr = $Valves.get_children()
 
 func _process(delta):
-	if !water_level.is_rising || player.player_dead:
+	if level_win || player.player_dead:
 		player.player_dead = true #  Freeze player
-		print('game over')
+		print('game over status -> ', level_win)
 	
+	level_win = !water_level.is_rising
 	#Lógica da subida de água e fecho do esgoto
 	water_level.is_rising = !level_valves_arr.all(get_closed_valves)  # Verifica todas as valvulas do nível para parar agua
 	closed_valves_arr = level_valves_arr.filter(get_closed_valves)  # Guarda valvulas fechadas
