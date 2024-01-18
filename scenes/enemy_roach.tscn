@@ -189,6 +189,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, -8)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilra1"]
 size = Vector2(20, 27.1429)
@@ -745,7 +757,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-0.122173, 0.274017, -0.122173]
+"values": [0.122173, 0.274017, 0.122173]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -860,6 +872,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(0, -8)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite2D:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_esf6p"]
 _data = {
@@ -882,6 +906,7 @@ size = Vector2(46, 23)
 [node name="EnemyRoach" type="CharacterBody2D"]
 z_index = 550
 collision_layer = 16
+collision_mask = 3
 script = ExtResource("1_54ono")
 
 [node name="ReloadTimer" type="Timer" parent="."]
@@ -891,6 +916,7 @@ one_shot = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 texture = ExtResource("2_bo2to")
+flip_h = true
 hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
