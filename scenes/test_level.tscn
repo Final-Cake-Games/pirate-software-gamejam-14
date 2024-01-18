@@ -38,9 +38,8 @@ texture = ExtResource("2_6g3pb")
 [node name="PlumberToolBlue" parent="." instance=ExtResource("6_m7eal")]
 position = Vector2(7, 168)
 
-[node name="PlumberTool" parent="." instance=ExtResource("5_t0i53")]
-position = Vector2(50, 133)
-rotation = 0.867245
+[node name="PlumberToolRed" parent="." instance=ExtResource("5_t0i53")]
+position = Vector2(51, 198)
 
 [node name="sewage_water_spreading" parent="." instance=ExtResource("8_xe7oh")]
 position = Vector2(465, 263)
