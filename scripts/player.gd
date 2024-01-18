@@ -22,10 +22,12 @@ var is_near_valve : bool = false
 var valve_nearby : Area2D = null
 var fixing : bool = false
 var can_fix_color : String = ''
+var tool_count : int = 0
 var player_dead : bool = false
-var life : int = 100
+var life : int = 100000
 
 func _process(_delta):
+	print(can_fix_color)
 	if !player_dead:
 		direction = Input.get_axis('move_left', 'move_right')
 		if Input.is_action_just_pressed('jump') && jumps_available > 0:
@@ -39,7 +41,6 @@ func _process(_delta):
 		animation_updater()
 
 func _physics_process(delta):
-	print(life)
 	if !player_dead:
 		move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
 		
