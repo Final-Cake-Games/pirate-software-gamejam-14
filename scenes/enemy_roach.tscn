@@ -927,14 +927,14 @@ vessel = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 
 [node name="DetectionRange" type="Area2D" parent="."]
-collision_layer = 16
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_s4rio")
 
 [node name="FightRange" type="Area2D" parent="."]
-collision_layer = 16
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightRange"]
