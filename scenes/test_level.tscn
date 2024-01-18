@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=13 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
 [ext_resource type="Texture2D" uid="uid://ncfdrlcs0uxs" path="res://assets/city.png" id="2_6g3pb"]
 [ext_resource type="PackedScene" uid="uid://0msmbwsgdvkq" path="res://scenes/ladder_tile_map.tscn" id="2_urrya"]
 [ext_resource type="PackedScene" uid="uid://8v6t1lkk3nv8" path="res://scenes/player.tscn" id="3_gw6fe"]
-[ext_resource type="PackedScene" uid="uid://dobs8dph3c6j6" path="res://scenes/plumber_tool.tscn" id="5_t0i53"]
+[ext_resource type="PackedScene" uid="uid://dobs8dph3c6j6" path="res://scenes/plumber_tool_red.tscn" id="5_t0i53"]
+[ext_resource type="PackedScene" uid="uid://j8pt8wqbr7au" path="res://scenes/plumber_tool_blue.tscn" id="6_m7eal"]
 [ext_resource type="PackedScene" uid="uid://c07kvstx5o1ih" path="res://scenes/pipes_tile_map.tscn" id="7_qprlw"]
 [ext_resource type="PackedScene" uid="uid://bmgw3p3t45vjj" path="res://scenes/sewage_water_spreading.tscn" id="8_xe7oh"]
 [ext_resource type="PackedScene" uid="uid://nfkkds3x475i" path="res://scenes/water.tscn" id="9_rlkdx"]
@@ -33,6 +34,9 @@ layer_0/tile_data = PackedInt32Array(1048606, 262146, 0, 1048605, 196610, 0, 458
 position = Vector2(237, -65)
 scale = Vector2(1.0625, 1.07353)
 texture = ExtResource("2_6g3pb")
+
+[node name="PlumberToolBlue" parent="." instance=ExtResource("6_m7eal")]
+position = Vector2(7, 168)
 
 [node name="PlumberTool" parent="." instance=ExtResource("5_t0i53")]
 position = Vector2(50, 133)
