@@ -33,7 +33,6 @@ func _ready():
 	roach_fight_state.roach_die.connect(roach_state_machine.change_state.bind(roach_die_state))
 
 func _process(delta):
-	print(player_dir)
 	current_direction = velocity
 	update_sprite_dir()
 	if player_target != null:
@@ -59,5 +58,6 @@ func update_sprite_dir():
 		sprite_2d.flip_h = (current_direction.x < 0)
 		
 func die():
-	roach_state_machine.current_state.roach_die.emit()
+	if dead == false:
+		roach_state_machine.current_state.roach_die.emit()
 
