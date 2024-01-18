@@ -29,21 +29,24 @@ func _exit_state():
 		reload_timer.stop()
 	
 func _physics_process(delta):
+	
+	if !vessel.is_on_floor():
+		vessel.move_and_slide()
+		vessel.velocity.y += vessel.GRAVITY * delta
+
 	if !animator.current_animation.begins_with('strike'):
 		animator.play('stand_idle')
-	print(reload_timer.time_left)
 
 func do_dmg():
 	recent_attack = true
 	reload_timer.start()
-	if (vessel.current_direction.x < 0):
+	if (vessel.player_dir.x < 0):
 		animator.play('strike_left')
 	else:
 		animator.play('strike_right')
-	await animator.animation_finished
 	vessel.player_target.take_dmg(10)
-	#print(vessel.player_target.life)
-
+	await animator.animation_finished
+	
 func _on_reload_timer_timeout():
 	recent_attack = false
 	do_dmg()
