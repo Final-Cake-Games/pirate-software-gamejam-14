@@ -1,11 +1,11 @@
 extends Area2D
 
 @export var FIX_TIME : float = 10.0
+@export_enum('RED', 'BLUE') var fix_color : String
 
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var progress_time : Timer = $Progress
 
-var fix_color : String = 'BLUE'
 var is_getting_fixed : bool = false
 var is_fixed : bool = false
 

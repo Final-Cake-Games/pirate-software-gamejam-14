@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbcgl0jlsfk22"]
 
-[ext_resource type="Script" path="res://scripts/water_valve_red.gd" id="1_365go"]
 [ext_resource type="Texture2D" uid="uid://bwb237sjsh38n" path="res://assets/valve_sheet.png" id="1_jj25u"]
+[ext_resource type="Script" path="res://scripts/valves.gd" id="1_juvqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf3vd"]
 radius = 18.0
@@ -39,7 +39,7 @@ animations = [{
 [node name="WaterValveRed" type="Area2D"]
 collision_layer = 32
 collision_mask = 2
-script = ExtResource("1_365go")
+script = ExtResource("1_juvqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
