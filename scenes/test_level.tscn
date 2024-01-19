@@ -48,12 +48,13 @@ amount = 500
 
 [node name="Valves" type="Node" parent="."]
 
-[node name="WaterValve" parent="Valves" instance=ExtResource("10_nx6s4")]
-position = Vector2(367, 300)
-FIX_TIME = 5.0
-
 [node name="WaterValveBlue" parent="Valves" instance=ExtResource("10_qnuou")]
 position = Vector2(431, 301)
+fix_color = "BLUE"
+
+[node name="WaterValveRed" parent="Valves" instance=ExtResource("10_nx6s4")]
+position = Vector2(352, 300)
+fix_color = "RED"
 
 [node name="Water" parent="." instance=ExtResource("9_rlkdx")]
 position = Vector2(239, 321)
