@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://j8pt8wqbr7au"]
 
-[ext_resource type="Script" path="res://scripts/plumber_tool_blue.gd" id="1_p4o1i"]
+[ext_resource type="Script" path="res://scripts/tools.gd" id="1_nb2qw"]
 [ext_resource type="Texture2D" uid="uid://cd7gv0m0x8qal" path="res://assets/player_assets/items/PlumberKeyAlicate.png" id="2_ju8ev"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lmted"]
@@ -23,7 +23,8 @@ collision_layer = 8
 collision_mask = 25
 mass = 2.5
 physics_material_override = SubResource("PhysicsMaterial_lmted")
-script = ExtResource("1_p4o1i")
+script = ExtResource("1_nb2qw")
+tool_fix_color = "BLUE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.5, 0.500004)

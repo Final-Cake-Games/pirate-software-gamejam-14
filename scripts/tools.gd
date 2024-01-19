@@ -1,18 +1,19 @@
 extends RigidBody2D
 
 @export var THROW_STR : float = 1500
+@export var player : CharacterBody2D
+@export_enum('RED', 'BLUE') var tool_fix_color : String
 
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 
-var player : CharacterBody2D 
 var picked_up : bool = false
 var can_be_picked_up : bool = false
 var smoothed_mouse_pos : Vector2
-var tool_fix_color = 'RED'
 var can_kill : bool = false
 
 func _ready():
-	player = get_node('../Player')
+	if !player:
+		player = get_node('../../Player')
 
 func _process(delta):
 	if can_be_picked_up:
