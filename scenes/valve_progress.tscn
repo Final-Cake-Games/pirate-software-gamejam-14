@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2scmylp2sxwt"]
+
+[ext_resource type="Texture2D" uid="uid://cxlh2um80187g" path="res://assets/progress_bar/under.png" id="1_4g1xg"]
+[ext_resource type="Script" path="res://scripts/valve_progress.gd" id="1_um78e"]
+[ext_resource type="Texture2D" uid="uid://ubofsu4t5smj" path="res://assets/progress_bar/over.png" id="2_73wnr"]
+[ext_resource type="Texture2D" uid="uid://bblsb5xxwaqrq" path="res://assets/progress_bar/progress.png" id="3_uhgch"]
+
+[node name="ValveProgress" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_um78e")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 40.0
+scale = Vector2(0.0799998, 0.0399998)
+texture_under = ExtResource("1_4g1xg")
+texture_over = ExtResource("2_73wnr")
+texture_progress = ExtResource("3_uhgch")
