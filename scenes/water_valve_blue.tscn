@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://bav6qq6dv2hhc"]
+
+[ext_resource type="Texture2D" uid="uid://ckwtral6633hy" path="res://assets/valve_sheet_blue.png" id="1_dago1"]
+[ext_resource type="Script" path="res://scripts/water_valve_blue.gd" id="2_aks7j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sf3vd"]
+radius = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lecp"]
+atlas = ExtResource("1_dago1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l30p"]
+atlas = ExtResource("1_dago1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2pvi"]
+atlas = ExtResource("1_dago1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcsqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lecp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l30p")
+}],
+"loop": true,
+"name": &"closing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2pvi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WaterValveBlue" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("2_aks7j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_sf3vd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_qcsqe")
+animation = &"closing"
+autoplay = "default"
+
+[node name="Progress" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Progress" to="." method="_on_progress_timeout"]
