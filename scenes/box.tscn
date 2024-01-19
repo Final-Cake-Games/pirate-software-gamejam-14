@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://1n6um0xbm5vd"]
+
+[ext_resource type="Texture2D" uid="uid://byf58t2wj2bcy" path="res://assets/Wooden_Box/WoodenBox.png" id="1_sv06e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jlx2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3vx3"]
+size = Vector2(42, 40)
+
+[node name="Box" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 11
+physics_material_override = SubResource("PhysicsMaterial_jlx2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_sv06e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m3vx3")
