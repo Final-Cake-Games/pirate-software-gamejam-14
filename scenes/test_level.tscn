@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=15 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
@@ -13,11 +13,26 @@
 [ext_resource type="PackedScene" uid="uid://cbcgl0jlsfk22" path="res://scenes/water_valve_red.tscn" id="10_nx6s4"]
 [ext_resource type="PackedScene" uid="uid://bav6qq6dv2hhc" path="res://scenes/water_valve_blue.tscn" id="10_qnuou"]
 [ext_resource type="PackedScene" uid="uid://dk2mb31yfk7vf" path="res://scenes/enemy_roach.tscn" id="11_1ga41"]
+[ext_resource type="PackedScene" uid="uid://1n6um0xbm5vd" path="res://scenes/box.tscn" id="12_ebl8y"]
 
 [node name="TestLevel" type="Node2D" node_paths=PackedStringArray("sewage_source", "water_level")]
 script = ExtResource("1_tjh8e")
 sewage_source = NodePath("sewage_water_spreading")
 water_level = NodePath("Water")
+
+[node name="City" type="Sprite2D" parent="."]
+position = Vector2(237, -65)
+scale = Vector2(1.0625, 1.07353)
+texture = ExtResource("2_6g3pb")
+
+[node name="sewage_water_spreading" parent="." instance=ExtResource("8_xe7oh")]
+position = Vector2(465, 263)
+amount = 500
+
+[node name="Water" parent="." instance=ExtResource("9_rlkdx")]
+position = Vector2(239, 321)
+scale = Vector2(2.64, 1e-05)
+MAX_HEIGHT = 12.0
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -30,15 +45,6 @@ layer_0/tile_data = PackedInt32Array(1245201, 0, 2, 1179665, 0, 1, 1114129, 0, 1
 
 [node name="PipesTileMap" parent="TileMaps" instance=ExtResource("7_qprlw")]
 layer_0/tile_data = PackedInt32Array(1048606, 262146, 0, 1048605, 196610, 0, 458782, 262146, 0, 458781, 262146, 0, 458780, 262146, 0, 458779, 262146, 0, 458778, 262146, 0, 458777, 2, 5, 393241, 2, 1, 524318, 262146, 0, 524317, 262146, 0, 524316, 262146, 0, 524315, 262146, 0, 524314, 262146, 0, 524313, 262146, 0, 524312, 2, 5, 458776, 2, 1, 393240, 2, 1, 1114112, 262146, 0, 1114113, 262146, 0, 1114114, 262146, 0, 1114115, 131074, 3, 1179651, 2, 1, 1245187, 2, 1, 1245184, 65538, 0, 1245185, 131074, 0, 1245197, 2, 0, 393225, 65538, 1, 393226, 131074, 1, 458761, 65538, 1, 458762, 131074, 1, 524297, 65538, 1, 524298, 131074, 1, 589833, 65538, 1, 589834, 131074, 1, 655369, 65538, 2, 655370, 131074, 2)
-
-[node name="City" type="Sprite2D" parent="."]
-position = Vector2(237, -65)
-scale = Vector2(1.0625, 1.07353)
-texture = ExtResource("2_6g3pb")
-
-[node name="sewage_water_spreading" parent="." instance=ExtResource("8_xe7oh")]
-position = Vector2(465, 263)
-amount = 500
 
 [node name="Tools" type="Node" parent="."]
 
@@ -58,13 +64,15 @@ fix_color = "BLUE"
 position = Vector2(352, 300)
 fix_color = "RED"
 
-[node name="Water" parent="." instance=ExtResource("9_rlkdx")]
-position = Vector2(239, 321)
-scale = Vector2(2.64, 1e-05)
-MAX_HEIGHT = 12.0
+[node name="Boxes" type="Node" parent="."]
 
-[node name="EnemyRoach" parent="." instance=ExtResource("11_1ga41")]
-position = Vector2(144, 301)
+[node name="Box" parent="Boxes" instance=ExtResource("12_ebl8y")]
+position = Vector2(117, 255)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemyRoach" parent="Enemies" instance=ExtResource("11_1ga41")]
+position = Vector2(548, 75)
 
 [node name="Player" parent="." instance=ExtResource("3_gw6fe")]
 position = Vector2(22, 243)
