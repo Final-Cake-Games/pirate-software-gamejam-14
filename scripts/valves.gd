@@ -28,6 +28,7 @@ func get_fixed():
 	print('fixing valve...')
 	animation.play('closing')
 	progress_time.paused = false
+	$ValveProgress._set_value((1 - (progress_time.time_left / FIX_TIME)) * 100)
 	
 func idle():
 	animation.play('default')
