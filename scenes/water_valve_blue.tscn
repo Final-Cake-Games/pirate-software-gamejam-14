@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bav6qq6dv2hhc"]
+[gd_scene load_steps=9 format=3 uid="uid://bav6qq6dv2hhc"]
 
 [ext_resource type="Texture2D" uid="uid://ckwtral6633hy" path="res://assets/valve_sheet_blue.png" id="1_dago1"]
 [ext_resource type="Script" path="res://scripts/valves.gd" id="1_y2fly"]
+[ext_resource type="PackedScene" uid="uid://b2scmylp2sxwt" path="res://scenes/valve_progress.tscn" id="3_5rxtr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf3vd"]
 radius = 18.0
@@ -57,5 +58,11 @@ autoplay = "default"
 
 [node name="Progress" type="Timer" parent="."]
 one_shot = true
+
+[node name="ValveProgress" parent="." instance=ExtResource("3_5rxtr")]
+offset_left = -5.0
+offset_top = -11.0
+offset_right = -5.0
+offset_bottom = -11.0
 
 [connection signal="timeout" from="Progress" to="." method="_on_progress_timeout"]
