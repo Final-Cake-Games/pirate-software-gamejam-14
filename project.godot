@@ -80,6 +80,7 @@ fix={
 2d_physics/layer_4="weapon"
 2d_physics/layer_5="enemy"
 2d_physics/layer_6="valves"
+2d_physics/layer_7="boxes"
 
 [physics]
 
