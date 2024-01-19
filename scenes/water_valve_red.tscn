@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://cbcgl0jlsfk22"]
 
-[ext_resource type="Script" path="res://scripts/water_valve.gd" id="1_bo4qb"]
-[ext_resource type="Texture2D" uid="uid://bwb237sjsh38n" path="res://assets/valve_sheet.png" id="1_ojlg6"]
+[ext_resource type="Script" path="res://scripts/water_valve_red.gd" id="1_365go"]
+[ext_resource type="Texture2D" uid="uid://bwb237sjsh38n" path="res://assets/valve_sheet.png" id="1_jj25u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf3vd"]
 radius = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kferw"]
-atlas = ExtResource("1_ojlg6")
+atlas = ExtResource("1_jj25u")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5m8gv"]
-atlas = ExtResource("1_ojlg6")
+atlas = ExtResource("1_jj25u")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qcsqe"]
@@ -36,10 +36,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="WaterValve" type="Area2D"]
+[node name="WaterValveRed" type="Area2D"]
 collision_layer = 32
 collision_mask = 2
-script = ExtResource("1_bo4qb")
+script = ExtResource("1_365go")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
