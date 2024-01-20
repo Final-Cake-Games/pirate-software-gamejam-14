@@ -20,7 +20,7 @@ size = Vector2(17, 5)
 [node name="PlumberToolBlue" type="RigidBody2D"]
 z_index = 550
 collision_layer = 8
-collision_mask = 25
+collision_mask = 89
 mass = 2.5
 physics_material_override = SubResource("PhysicsMaterial_lmted")
 script = ExtResource("1_nb2qw")
