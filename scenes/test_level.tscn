@@ -76,3 +76,4 @@ position = Vector2(548, 75)
 
 [node name="Player" parent="." instance=ExtResource("3_gw6fe")]
 position = Vector2(22, 243)
+push_force = 100.0
