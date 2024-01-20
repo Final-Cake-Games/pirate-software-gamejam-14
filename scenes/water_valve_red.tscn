@@ -42,6 +42,7 @@ z_index = -50
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_juvqk")
+fix_color = "RED"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
