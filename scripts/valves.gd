@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var FIX_TIME : float = 10.0
-@export_enum('RED', 'BLUE') var fix_color : String
+@export_enum('RED', 'BLUE', 'ORANGE', 'LIME') var fix_color : String
 
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var progress_time : Timer = $Progress
@@ -25,7 +25,6 @@ func _process(_delta):
 		idle()	
 	
 func get_fixed():
-	print('fixing valve...')
 	animation.play('closing')
 	progress_time.paused = false
 	$ValveProgress._set_value((1 - (progress_time.time_left / FIX_TIME)) * 100)
