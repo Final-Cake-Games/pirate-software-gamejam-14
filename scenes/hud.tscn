@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwjwvcia6pftl"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_dccop"]
+[ext_resource type="FontFile" uid="uid://c0nwfaa5jxu1a" path="res://assets/fonts/dogicapixel.ttf" id="2_10fe5"]
+[ext_resource type="Texture2D" uid="uid://de7iy3ynqpcmm" path="res://assets/UI/valves/red.png" id="3_qx666"]
+[ext_resource type="Texture2D" uid="uid://bwdlvk0l2sc1v" path="res://assets/UI/valves/blue.png" id="4_d8gly"]
+[ext_resource type="Texture2D" uid="uid://c64hm7hkdcp1t" path="res://assets/UI/valves/orange.png" id="5_prq78"]
+[ext_resource type="Texture2D" uid="uid://cgy2c13urvf8u" path="res://assets/UI/valves/lime.png" id="6_m1c3n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6dwk"]
+line_spacing = 1.0
+font = ExtResource("2_10fe5")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_byihx"]
+line_spacing = 0.0
+font = ExtResource("2_10fe5")
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_dccop")
+
+[node name="ValvesRemaining" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Pannel" type="PanelContainer" parent="ValvesRemaining"]
+layout_direction = 2
+offset_left = 106.0
+offset_top = 2.0
+offset_right = 341.0
+offset_bottom = 22.0
+size_flags_vertical = 0
+
+[node name="ValvesLeft" type="Label" parent="ValvesRemaining"]
+offset_left = 110.0
+offset_top = 4.0
+offset_right = 154.0
+offset_bottom = 19.0
+size_flags_vertical = 0
+text = "Valves 
+Left"
+label_settings = SubResource("LabelSettings_u6dwk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RedValve" type="TextureRect" parent="ValvesRemaining"]
+offset_left = 177.0
+offset_top = 4.0
+offset_right = 209.0
+offset_bottom = 36.0
+scale = Vector2(0.48, 0.48)
+size_flags_vertical = 0
+texture = ExtResource("3_qx666")
+
+[node name="RedAmount" type="Label" parent="ValvesRemaining"]
+offset_left = 164.0
+offset_top = 5.0
+offset_right = 178.0
+offset_bottom = 19.0
+size_flags_vertical = 0
+text = "3"
+label_settings = SubResource("LabelSettings_byihx")
+
+[node name="BlueValve" type="TextureRect" parent="ValvesRemaining"]
+offset_left = 223.0
+offset_top = 4.0
+offset_right = 255.0
+offset_bottom = 36.0
+scale = Vector2(0.48, 0.48)
+size_flags_vertical = 0
+texture = ExtResource("4_d8gly")
+
+[node name="BlueAmount" type="Label" parent="ValvesRemaining"]
+offset_left = 210.0
+offset_top = 5.0
+offset_right = 224.0
+offset_bottom = 19.0
+size_flags_vertical = 0
+text = "3"
+label_settings = SubResource("LabelSettings_byihx")
+
+[node name="OrangeValve" type="TextureRect" parent="ValvesRemaining"]
+offset_left = 267.0
+offset_top = 4.0
+offset_right = 299.0
+offset_bottom = 36.0
+scale = Vector2(0.48, 0.48)
+size_flags_vertical = 0
+texture = ExtResource("5_prq78")
+
+[node name="OrangeAmount" type="Label" parent="ValvesRemaining"]
+offset_left = 254.0
+offset_top = 5.0
+offset_right = 268.0
+offset_bottom = 19.0
+size_flags_vertical = 0
+text = "3"
+label_settings = SubResource("LabelSettings_byihx")
+
+[node name="LimeValve" type="TextureRect" parent="ValvesRemaining"]
+offset_left = 317.0
+offset_top = 4.0
+offset_right = 349.0
+offset_bottom = 36.0
+scale = Vector2(0.48, 0.48)
+size_flags_vertical = 0
+texture = ExtResource("6_m1c3n")
+
+[node name="LimeAmount" type="Label" parent="ValvesRemaining"]
+offset_left = 304.0
+offset_top = 5.0
+offset_right = 318.0
+offset_bottom = 19.0
+size_flags_vertical = 0
+text = "3"
+label_settings = SubResource("LabelSettings_byihx")
