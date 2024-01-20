@@ -24,8 +24,10 @@ func _process(delta):
 
 func _on_body_entered(body):
 	player = body
+	player.set_water_physics()
 
 func _on_body_exited(body):
+	player.revert_physics()
 	player = null
 	dmg_timer.stop()
 

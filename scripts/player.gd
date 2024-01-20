@@ -8,10 +8,14 @@ extends CharacterBody2D
 
 # Variáveis de física
 @export var MAX_SPEED : float = 200
+@export var WATER_MAX_SPEED : float = 125
 @export var CLIMB_SPEED : float = 100
 @export var GRAVITY : float = 900
+@export var WATER_GRAVITY : float = 350
 @export var JUMP_FORCE : float = 300
+@export var WATER_JUMP : float = 200
 @export var SECOND_JUMP_FORCE : float = 200
+@export var WATER_SECOND_JUMP : float = 100
 @export var MAX_JUMPS : int = 2
 @export var push_force : float = 100
 
@@ -26,9 +30,19 @@ var can_fix_color : String = ''
 var tool_count : int = 0
 var player_dead : bool = false
 var life : int = 100000
+var current_gravity : float
+var current_jump_force : float
+var current_second_jump_force : float
+var current_max_speed : float
 
+func _ready():
+	current_gravity = GRAVITY
+	current_jump_force = JUMP_FORCE
+	current_second_jump_force = SECOND_JUMP_FORCE
+	current_max_speed = MAX_SPEED
 
 func _process(_delta):
+	print(current_gravity)
 	if !player_dead:
 		direction = Input.get_axis('move_left', 'move_right')
 		if Input.is_action_just_pressed('jump') && jumps_available > 0:
@@ -48,12 +62,10 @@ func _physics_process(delta):
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			if collision.get_collider().name == 'Box':
-				if Input.is_action_pressed('fix'):
-					print(collision.get_collider().get_global_position())
 				collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 		
 		if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
-			velocity.y += GRAVITY * delta
+			velocity.y += current_gravity * delta
 		
 		if is_on_floor():  # Se está dá reset aos saltos
 			jumps_available = MAX_JUMPS
@@ -63,7 +75,7 @@ func _physics_process(delta):
 			if is_on_ladder:  # Sai da escada se andar na horizontal nela
 				exit_ladder()
 				
-			velocity.x = direction * MAX_SPEED  # Aplica velocidade máxima imediatamente
+			velocity.x = direction * current_max_speed  # Aplica velocidade máxima imediatamente
 		else:  # Estamos a parar
 			velocity.x = move_toward(velocity.x, 0, 30)  # Abranda até 0 de 30 em 30 unidades
 		
@@ -81,9 +93,9 @@ func jump():
 		return 
 	
 	if jumps_available == 2:  # Verifica se é 1º ou 2º salto
-		velocity.y = -JUMP_FORCE
+		velocity.y = -current_jump_force
 	else:
-		velocity.y = -SECOND_JUMP_FORCE
+		velocity.y = -current_second_jump_force
 	
 	jumps_available -= 1
 	
@@ -130,6 +142,19 @@ func take_dmg(amount):
 func die():
 	player_dead = true
 	animation_player.play('die')
+	
+func set_water_physics():
+	velocity.y = 0
+	current_max_speed = WATER_MAX_SPEED
+	current_gravity = WATER_GRAVITY
+	current_jump_force = WATER_JUMP
+	current_second_jump_force = WATER_SECOND_JUMP
+	
+func revert_physics():
+	current_max_speed = MAX_SPEED
+	current_gravity = GRAVITY
+	current_jump_force = JUMP_FORCE
+	current_second_jump_force = SECOND_JUMP_FORCE
 
 func exit_ladder():
 	is_on_ladder = false 
