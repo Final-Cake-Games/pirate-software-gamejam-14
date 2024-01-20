@@ -28,7 +28,7 @@ var valve_nearby : Area2D = null
 var fixing : bool = false
 var can_fix_color : String = ''
 var player_dead : bool = false
-var life : int = 100000
+var life : int = 100
 var current_gravity : float
 var current_jump_force : float
 var current_second_jump_force : float
@@ -42,6 +42,9 @@ func _ready():
 	current_max_speed = MAX_SPEED
 
 func _process(_delta):
+	
+	$PlayerLife.value = life
+	
 	if equipped_tool != null:
 		can_fix_color = equipped_tool.tool_fix_color
 	else:

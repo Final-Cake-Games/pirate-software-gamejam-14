@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8v6t1lkk3nv8"]
+[gd_scene load_steps=27 format=3 uid="uid://8v6t1lkk3nv8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0awtb"]
 [ext_resource type="Texture2D" uid="uid://cvuq3i2kasyka" path="res://assets/player_assets/animations/Faint/MartinFaint.png" id="2_0iela"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://8icm1o45nb4r" path="res://assets/player_assets/animations/Valve/ValveAnim.png" id="2_eh81r"]
 [ext_resource type="Texture2D" uid="uid://dldtkgnl07djs" path="res://assets/player_assets/animations/Climb/ClimbAnim.png" id="2_umxuk"]
 [ext_resource type="Texture2D" uid="uid://d13yhswid7eij" path="res://assets/player_assets/animations/Fall/FallAnim.png" id="2_wnxk6"]
+[ext_resource type="Texture2D" uid="uid://cxlh2um80187g" path="res://assets/progress_bar/under.png" id="9_wc8nv"]
+[ext_resource type="Texture2D" uid="uid://ubofsu4t5smj" path="res://assets/progress_bar/over.png" id="10_2u70t"]
+[ext_resource type="Texture2D" uid="uid://bblsb5xxwaqrq" path="res://assets/progress_bar/progress.png" id="11_2ln7s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86hcp"]
 
@@ -91,6 +94,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [ExtResource("2_0iela")]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerLife:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, -24)]
+}
 
 [sub_resource type="Animation" id="Animation_yt38p"]
 resource_name = "climbing"
@@ -131,6 +146,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerLife:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -24), Vector2(-10, -25)]
 }
 
 [sub_resource type="Animation" id="Animation_8i1fl"]
@@ -196,6 +223,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-1, -9), Vector2(0, -11), Vector2(1, -7)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerLife:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -25), Vector2(-10, -18)]
+}
 
 [sub_resource type="Animation" id="Animation_0bi7k"]
 resource_name = "fall"
@@ -249,6 +288,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(6, -16), Vector2(5, -19), Vector2(6, -17)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerLife:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-9, -28), Vector2(-10, -27), Vector2(-9, -27)]
+}
 
 [sub_resource type="Animation" id="Animation_nyj0y"]
 resource_name = "fixing"
@@ -289,6 +340,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerLife:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -25), Vector2(-10, -24)]
 }
 
 [sub_resource type="Animation" id="Animation_4ebbr"]
@@ -343,6 +406,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, -6), Vector2(0, -7), Vector2(0, -6)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerLife:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, -25), Vector2(-10, -26), Vector2(-10, -25)]
+}
 
 [sub_resource type="Animation" id="Animation_1pxns"]
 resource_name = "jump_1"
@@ -394,6 +469,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, -6), Vector2(0, -5), Vector2(0, -7), Vector2(3, -14), Vector2(1, -16), Vector2(6, -17)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerLife:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10.9321, -24), Vector2(-11, -23), Vector2(-11, -25), Vector2(-10, -26), Vector2(-10, -27), Vector2(-10, -28)]
 }
 
 [sub_resource type="Animation" id="Animation_8m54f"]
@@ -447,6 +534,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(2, -7), Vector2(2, -8), Vector2(2, -7)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerLife:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, -24), Vector2(-10, -25), Vector2(-9, -24)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48i4r"]
@@ -555,6 +654,22 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_horizontal_offset = 1.0
 drag_vertical_offset = 1.0
+
+[node name="PlayerLife" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.615686)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -11.0
+offset_top = -24.0
+offset_right = 117.0
+offset_bottom = 16.0
+grow_horizontal = 2
+scale = Vector2(0.159999, 0.0799992)
+texture_under = ExtResource("9_wc8nv")
+texture_over = ExtResource("10_2u70t")
+texture_progress = ExtResource("11_2ln7s")
+tint_under = Color(1, 0, 0, 1)
 
 [connection signal="area_entered" from="ValveCheck" to="." method="_on_valve_check_area_entered"]
 [connection signal="area_exited" from="ValveCheck" to="." method="_on_valve_check_area_exited"]
