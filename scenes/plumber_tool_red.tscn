@@ -24,6 +24,7 @@ collision_mask = 89
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_lmted")
 script = ExtResource("1_fmui6")
+THROW_STR = 1000.0
 tool_fix_color = "RED"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
