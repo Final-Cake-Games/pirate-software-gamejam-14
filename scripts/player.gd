@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var JUMP_FORCE : float = 300
 @export var SECOND_JUMP_FORCE : float = 200
 @export var MAX_JUMPS : int = 2
+@export var push_force : float = 100
 
 var direction : float  # Input do utilizador (direção no X)
 var jumps_available : int = 0
@@ -26,8 +27,8 @@ var tool_count : int = 0
 var player_dead : bool = false
 var life : int = 100000
 
+
 func _process(_delta):
-	print(can_fix_color)
 	if !player_dead:
 		direction = Input.get_axis('move_left', 'move_right')
 		if Input.is_action_just_pressed('jump') && jumps_available > 0:
@@ -43,6 +44,13 @@ func _process(_delta):
 func _physics_process(delta):
 	if !player_dead:
 		move_and_slide()  # Chamado 1º para atualizar is_on_floor() antes de dar rest ao MAX_JUMPS
+		
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider().name == 'Box':
+				if Input.is_action_pressed('fix'):
+					print(collision.get_collider().get_global_position())
+				collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 		
 		if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
 			velocity.y += GRAVITY * delta
