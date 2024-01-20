@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=19 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dk2mb31yfk7vf" path="res://scenes/enemy_roach.tscn" id="11_1ga41"]
 [ext_resource type="PackedScene" uid="uid://dsamhme6h8gfh" path="res://scenes/plumber_tool_lime.tscn" id="11_54upu"]
 [ext_resource type="PackedScene" uid="uid://1n6um0xbm5vd" path="res://scenes/box.tscn" id="12_ebl8y"]
+[ext_resource type="PackedScene" uid="uid://qoi0wjqt4bhm" path="res://scenes/water_valve_lime.tscn" id="14_r4ofj"]
+[ext_resource type="PackedScene" uid="uid://26hgl55t27bw" path="res://scenes/water_valve_orange.tscn" id="15_4pyjv"]
 
 [node name="TestLevel" type="Node2D" node_paths=PackedStringArray("sewage_source", "water_level")]
 script = ExtResource("1_tjh8e")
@@ -71,6 +73,12 @@ fix_color = "BLUE"
 [node name="WaterValveRed" parent="Valves" instance=ExtResource("10_nx6s4")]
 position = Vector2(352, 300)
 fix_color = "RED"
+
+[node name="WaterValveLime" parent="Valves" instance=ExtResource("14_r4ofj")]
+position = Vector2(313, 302)
+
+[node name="WaterValveOrange" parent="Valves" instance=ExtResource("15_4pyjv")]
+position = Vector2(387, 303)
 
 [node name="Boxes" type="Node" parent="."]
 
