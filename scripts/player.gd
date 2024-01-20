@@ -27,13 +27,13 @@ var is_near_valve : bool = false
 var valve_nearby : Area2D = null
 var fixing : bool = false
 var can_fix_color : String = ''
-var tool_count : int = 0
 var player_dead : bool = false
 var life : int = 100000
 var current_gravity : float
 var current_jump_force : float
 var current_second_jump_force : float
 var current_max_speed : float
+var equipped_tool : RigidBody2D = null
 
 func _ready():
 	current_gravity = GRAVITY
@@ -42,7 +42,11 @@ func _ready():
 	current_max_speed = MAX_SPEED
 
 func _process(_delta):
-	print(current_gravity)
+	if equipped_tool != null:
+		can_fix_color = equipped_tool.tool_fix_color
+	else:
+		can_fix_color = ''
+	
 	if !player_dead:
 		direction = Input.get_axis('move_left', 'move_right')
 		if Input.is_action_just_pressed('jump') && jumps_available > 0:
