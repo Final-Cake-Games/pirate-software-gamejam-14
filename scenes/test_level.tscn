@@ -11,14 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://bmgw3p3t45vjj" path="res://scenes/sewage_water_spreading.tscn" id="8_xe7oh"]
 [ext_resource type="PackedScene" uid="uid://nfkkds3x475i" path="res://scenes/water.tscn" id="9_rlkdx"]
 [ext_resource type="PackedScene" uid="uid://cmf72jr1fh3dk" path="res://scenes/plumber_tool_orange.tscn" id="10_14nmd"]
-[ext_resource type="PackedScene" uid="uid://cbcgl0jlsfk22" path="res://scenes/water_valve_red.tscn" id="10_nx6s4"]
-[ext_resource type="PackedScene" uid="uid://bav6qq6dv2hhc" path="res://scenes/water_valve_blue.tscn" id="10_qnuou"]
+[ext_resource type="PackedScene" path="res://scenes/water_valve_red.tscn" id="10_nx6s4"]
+[ext_resource type="PackedScene" path="res://scenes/water_valve_blue.tscn" id="10_qnuou"]
 [ext_resource type="PackedScene" uid="uid://dk2mb31yfk7vf" path="res://scenes/enemy_roach.tscn" id="11_1ga41"]
 [ext_resource type="PackedScene" uid="uid://dsamhme6h8gfh" path="res://scenes/plumber_tool_lime.tscn" id="11_54upu"]
 [ext_resource type="PackedScene" uid="uid://1n6um0xbm5vd" path="res://scenes/box.tscn" id="12_ebl8y"]
 [ext_resource type="PackedScene" uid="uid://qoi0wjqt4bhm" path="res://scenes/water_valve_lime.tscn" id="14_r4ofj"]
 [ext_resource type="PackedScene" uid="uid://26hgl55t27bw" path="res://scenes/water_valve_orange.tscn" id="15_4pyjv"]
-[ext_resource type="PackedScene" uid="uid://dwjwvcia6pftl" path="res://scenes/hud.tscn" id="19_mh5cp"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="19_mh5cp"]
 
 [node name="TestLevel" type="Node2D" node_paths=PackedStringArray("sewage_source", "water_level")]
 script = ExtResource("1_tjh8e")
@@ -75,7 +75,6 @@ fix_color = "BLUE"
 
 [node name="WaterValveRed" parent="Valves" instance=ExtResource("10_nx6s4")]
 position = Vector2(352, 300)
-fix_color = "RED"
 
 [node name="WaterValveLime" parent="Valves" instance=ExtResource("14_r4ofj")]
 position = Vector2(313, 302)
