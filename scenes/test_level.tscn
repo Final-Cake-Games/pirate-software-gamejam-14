@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=20 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
@@ -18,11 +18,14 @@
 [ext_resource type="PackedScene" uid="uid://1n6um0xbm5vd" path="res://scenes/box.tscn" id="12_ebl8y"]
 [ext_resource type="PackedScene" uid="uid://qoi0wjqt4bhm" path="res://scenes/water_valve_lime.tscn" id="14_r4ofj"]
 [ext_resource type="PackedScene" uid="uid://26hgl55t27bw" path="res://scenes/water_valve_orange.tscn" id="15_4pyjv"]
+[ext_resource type="PackedScene" uid="uid://dwjwvcia6pftl" path="res://scenes/hud.tscn" id="19_mh5cp"]
 
 [node name="TestLevel" type="Node2D" node_paths=PackedStringArray("sewage_source", "water_level")]
 script = ExtResource("1_tjh8e")
 sewage_source = NodePath("sewage_water_spreading")
 water_level = NodePath("Water")
+
+[node name="HUD" parent="." instance=ExtResource("19_mh5cp")]
 
 [node name="City" type="Sprite2D" parent="."]
 position = Vector2(237, -65)
@@ -79,6 +82,9 @@ position = Vector2(313, 302)
 
 [node name="WaterValveOrange" parent="Valves" instance=ExtResource("15_4pyjv")]
 position = Vector2(387, 303)
+
+[node name="WaterValveRed2" parent="Valves" instance=ExtResource("10_nx6s4")]
+position = Vector2(46, 253)
 
 [node name="Boxes" type="Node" parent="."]
 
