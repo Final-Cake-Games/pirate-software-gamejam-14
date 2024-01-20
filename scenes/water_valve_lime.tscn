@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://qoi0wjqt4bhm"]
+
+[ext_resource type="Script" path="res://scripts/valves.gd" id="1_o560f"]
+[ext_resource type="Texture2D" uid="uid://b0nep18dcgprm" path="res://assets/valve_sheet_lime.png" id="2_xsxet"]
+[ext_resource type="PackedScene" uid="uid://b2scmylp2sxwt" path="res://scenes/valve_progress.tscn" id="3_1dkfw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sf3vd"]
+radius = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upam0"]
+atlas = ExtResource("2_xsxet")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3jaq"]
+atlas = ExtResource("2_xsxet")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3coev"]
+atlas = ExtResource("2_xsxet")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcsqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upam0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3jaq")
+}],
+"loop": true,
+"name": &"closing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3coev")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WaterValveLime" type="Area2D"]
+z_index = -50
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_o560f")
+fix_color = "LIME"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_sf3vd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_qcsqe")
+autoplay = "default"
+
+[node name="Progress" type="Timer" parent="."]
+one_shot = true
+
+[node name="ValveProgress" parent="." instance=ExtResource("3_1dkfw")]
+offset_left = -5.0
+offset_top = -11.0
+offset_right = -5.0
+offset_bottom = -11.0
+
+[connection signal="timeout" from="Progress" to="." method="_on_progress_timeout"]
