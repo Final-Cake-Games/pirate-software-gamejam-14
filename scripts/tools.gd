@@ -5,6 +5,7 @@ extends RigidBody2D
 @export_enum('RED', 'BLUE', 'LIME', 'ORANGE') var tool_fix_color : String
 
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
+@onready var collision_sfx_player : AudioStreamPlayer = $ToolCollisionSFX
 
 var can_be_picked_up : bool = false
 var smoothed_mouse_pos : Vector2
@@ -15,13 +16,13 @@ func _ready():
 		player = get_node('../../Player')
 
 func _process(delta):
-	
 	if can_be_picked_up:
 		if Input.is_action_just_pressed('pick_up') && !player.player_dead && player.equipped_tool == null:
 			player.equipped_tool = self
 
 func _physics_process(delta):
 	can_kill = (linear_velocity.x > 100 || linear_velocity.y > 100 || linear_velocity.x < -100 || linear_velocity.y < -100)
+
 	
 	if player.equipped_tool != null:
 		player.equipped_tool.position = player.get_child(0).get_child(0).global_position  # Place tool in hand of player
@@ -60,3 +61,9 @@ func _on_pick_up_detect_body_exited(body):
 func _on_kill_detect_body_entered(body):
 	if can_kill:
 		body.die()
+
+func _on_body_entered(body):
+	if !body.name.begins_with('Enemy'):
+		if linear_velocity.x > 15 or linear_velocity.x < -15 or linear_velocity.y > 15 or linear_velocity.y < -15:
+			collision_sfx_player.playing = false
+			collision_sfx_player.play()
