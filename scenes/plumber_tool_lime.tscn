@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsamhme6h8gfh"]
+[gd_scene load_steps=8 format=3 uid="uid://dsamhme6h8gfh"]
 
 [ext_resource type="Script" path="res://scripts/tools.gd" id="1_osujb"]
 [ext_resource type="Texture2D" uid="uid://gf7qodxavwu2" path="res://assets/player_assets/items/PlumberHammer.png" id="2_ptp4q"]
+[ext_resource type="PackedScene" uid="uid://chpq0bmpnj4lg" path="res://scenes/tool_collision_sfx.tscn" id="3_i28q0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lmted"]
 friction = 0.5
@@ -23,6 +24,8 @@ collision_layer = 8
 collision_mask = 89
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_lmted")
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("1_osujb")
 THROW_STR = 1000.0
 tool_fix_color = "LIME"
@@ -55,6 +58,9 @@ collision_mask = 16
 position = Vector2(4.5, 0.5)
 shape = SubResource("RectangleShape2D_4r2yr")
 
+[node name="ToolCollisionSFX" parent="." instance=ExtResource("3_i28q0")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="PickUpDetect" to="." method="_on_pick_up_detect_body_entered"]
 [connection signal="body_exited" from="PickUpDetect" to="." method="_on_pick_up_detect_body_exited"]
 [connection signal="body_entered" from="KillDetect" to="." method="_on_kill_detect_body_entered"]

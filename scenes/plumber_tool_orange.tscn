@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmf72jr1fh3dk"]
+[gd_scene load_steps=8 format=3 uid="uid://cmf72jr1fh3dk"]
 
 [ext_resource type="Script" path="res://scripts/tools.gd" id="1_6qdls"]
 [ext_resource type="Texture2D" uid="uid://bfbtsachq2fb8" path="res://assets/player_assets/items/PlumberTorch.png" id="2_ljig1"]
+[ext_resource type="PackedScene" uid="uid://chpq0bmpnj4lg" path="res://scenes/tool_collision_sfx.tscn" id="3_prjhc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lmted"]
 friction = 0.5
@@ -23,6 +24,8 @@ collision_layer = 8
 collision_mask = 89
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_lmted")
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("1_6qdls")
 THROW_STR = 1000.0
 tool_fix_color = "ORANGE"
@@ -55,6 +58,9 @@ collision_mask = 16
 position = Vector2(4.5, 0.5)
 shape = SubResource("RectangleShape2D_4r2yr")
 
+[node name="ToolCollisionSFX" parent="." instance=ExtResource("3_prjhc")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="PickUpDetect" to="." method="_on_pick_up_detect_body_entered"]
 [connection signal="body_exited" from="PickUpDetect" to="." method="_on_pick_up_detect_body_exited"]
 [connection signal="body_entered" from="KillDetect" to="." method="_on_kill_detect_body_entered"]
