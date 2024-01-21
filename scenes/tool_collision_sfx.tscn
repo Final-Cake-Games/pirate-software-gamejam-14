@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://chpq0bmpnj4lg"]
+
+[ext_resource type="AudioStream" uid="uid://dm6kmuxoh81bv" path="res://assets/sfx/tools/collisions/drop1.mp3" id="1_lej7s"]
+[ext_resource type="AudioStream" uid="uid://bj1x4g1p0smxp" path="res://assets/sfx/tools/collisions/drop2.mp3" id="2_xpqlm"]
+[ext_resource type="AudioStream" uid="uid://daq0mwod8838o" path="res://assets/sfx/tools/collisions/drop3.mp3" id="3_v4pvq"]
+[ext_resource type="AudioStream" uid="uid://cgngbctx8wipn" path="res://assets/sfx/tools/collisions/drop4.mp3" id="4_4imvi"]
+[ext_resource type="AudioStream" uid="uid://dptyyx20ys05h" path="res://assets/sfx/tools/collisions/drop5.mp3" id="5_t3oaf"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_txueq"]
+random_pitch = 1.5
+streams_count = 5
+stream_0/stream = ExtResource("1_lej7s")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_xpqlm")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_v4pvq")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_4imvi")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_t3oaf")
+stream_4/weight = 1.0
+
+[node name="ToolCollisionSFX" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamRandomizer_txueq")
+volume_db = -20.0
