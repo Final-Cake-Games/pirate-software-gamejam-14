@@ -104,3 +104,6 @@ rotation = -1.63656
 
 [node name="Player" parent="." instance=ExtResource("3_gw6fe")]
 position = Vector2(22, 243)
+
+[connection signal="next_level" from="HUD" to="." method="_load_next_level"]
+[connection signal="restart_level" from="HUD" to="." method="_restart_current_level"]
