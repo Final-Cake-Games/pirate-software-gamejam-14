@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://nfkkds3x475i"]
 
-[ext_resource type="Script" path="res://scripts/Fillwater.gd" id="1_7cxln"]
+[ext_resource type="Script" path="res://scripts/fill_water.gd" id="1_b2cgp"]
 [ext_resource type="Gradient" uid="uid://dxvbta8kii6r2" path="res://assets/sewage_color_gradient.tres" id="2_7m7o6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywy2a"]
@@ -13,7 +13,7 @@ gradient = ExtResource("2_7m7o6")
 z_index = 600
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_7cxln")
+script = ExtResource("1_b2cgp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)

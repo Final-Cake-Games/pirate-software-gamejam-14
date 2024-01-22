@@ -34,5 +34,3 @@ func _on_body_exited(body):
 func _on_dmg_timer_timeout():
 	if player && is_rising:
 		player.take_dmg(10)
-	
-		
