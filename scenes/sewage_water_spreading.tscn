@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmgw3p3t45vjj"]
+[gd_scene load_steps=5 format=3 uid="uid://bmgw3p3t45vjj"]
 
 [ext_resource type="Gradient" uid="uid://dxvbta8kii6r2" path="res://assets/sewage_color_gradient.tres" id="1_xl02l"]
+[ext_resource type="Script" path="res://scripts/sewage_water_spreading.gd" id="2_nym0p"]
+[ext_resource type="AudioStream" uid="uid://de0r3kb5y8phw" path="res://assets/sfx/water/water_fall.mp3" id="3_yhcq0"]
 
 [sub_resource type="Curve" id="Curve_q02df"]
 _data = [Vector2(0, 1), 0.0, 0.183673, 0, 0, Vector2(0.982906, 0.032967), 0.0, 0.0, 0, 0]
@@ -22,3 +24,9 @@ initial_velocity_max = 1000.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_q02df")
 color_ramp = ExtResource("1_xl02l")
+script = ExtResource("2_nym0p")
+
+[node name="water_fall_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yhcq0")
+volume_db = -10.0
+attenuation = 8.28211
