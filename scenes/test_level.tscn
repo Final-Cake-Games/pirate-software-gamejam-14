@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpm61pyitf6as"]
+[gd_scene load_steps=20 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
 [ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
@@ -15,12 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://dk2mb31yfk7vf" path="res://scenes/enemy_roach.tscn" id="11_1ga41"]
 [ext_resource type="PackedScene" uid="uid://dsamhme6h8gfh" path="res://scenes/plumber_tool_lime.tscn" id="11_54upu"]
 [ext_resource type="PackedScene" uid="uid://1n6um0xbm5vd" path="res://scenes/box.tscn" id="12_ebl8y"]
+[ext_resource type="PackedScene" uid="uid://26hgl55t27bw" path="res://scenes/water_valve_orange.tscn" id="13_lbvkp"]
 [ext_resource type="PackedScene" uid="uid://bav6qq6dv2hhc" path="res://scenes/water_valve_blue.tscn" id="13_prob2"]
+[ext_resource type="PackedScene" uid="uid://qoi0wjqt4bhm" path="res://scenes/water_valve_lime.tscn" id="15_17lqi"]
 [ext_resource type="PackedScene" uid="uid://dwjwvcia6pftl" path="res://scenes/hud.tscn" id="19_mh5cp"]
 
 [node name="TestLevel" type="Node2D" node_paths=PackedStringArray("sewage_source", "water_level")]
 script = ExtResource("1_tjh8e")
-sewage_source = NodePath("sewage_water_spreading")
+sewage_source = NodePath("SewageParticles/sewage_water_spreading")
 water_level = NodePath("Water")
 
 [node name="HUD" parent="." instance=ExtResource("19_mh5cp")]
@@ -62,11 +64,17 @@ position = Vector2(9, 146)
 
 [node name="WaterValveRed2" parent="Valves" node_paths=PackedStringArray("associated_sewage") instance=ExtResource("10_nx6s4")]
 position = Vector2(439, 304)
-associated_sewage = NodePath("../../sewage_water_spreading")
+associated_sewage = NodePath("../../SewageParticles/sewage_water_spreading")
 
-[node name="WaterValveBlue" parent="Valves" node_paths=PackedStringArray("associated_sewage") instance=ExtResource("13_prob2")]
-position = Vector2(53, 253)
-associated_sewage = NodePath("../../sewage_water_spreading2")
+[node name="WaterValveOrange" parent="Valves" node_paths=PackedStringArray("associated_sewage") instance=ExtResource("13_lbvkp")]
+position = Vector2(52, 253)
+associated_sewage = NodePath("../../SewageParticles/sewage_water_spreading2")
+
+[node name="WaterValveBlue" parent="Valves" instance=ExtResource("13_prob2")]
+position = Vector2(186, 282)
+
+[node name="WaterValveLime" parent="Valves" instance=ExtResource("15_17lqi")]
+position = Vector2(248, 297)
 
 [node name="Boxes" type="Node" parent="."]
 
@@ -84,11 +92,13 @@ position = Vector2(289, 250)
 [node name="EnemyRoach3" parent="Enemies" instance=ExtResource("11_1ga41")]
 position = Vector2(429, 255)
 
-[node name="sewage_water_spreading" parent="." instance=ExtResource("8_xe7oh")]
+[node name="SewageParticles" type="Node" parent="."]
+
+[node name="sewage_water_spreading" parent="SewageParticles" instance=ExtResource("8_xe7oh")]
 position = Vector2(465, 264)
 amount = 500
 
-[node name="sewage_water_spreading2" parent="." instance=ExtResource("8_xe7oh")]
+[node name="sewage_water_spreading2" parent="SewageParticles" instance=ExtResource("8_xe7oh")]
 position = Vector2(159, 174)
 rotation = -1.63656
 
