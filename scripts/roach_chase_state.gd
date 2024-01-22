@@ -16,8 +16,8 @@ func _enter_state() -> void:
 	set_physics_process(true) 
 	
 	animator.play('walk')
-	RoachSfxHandler.play_sfx(vessel.HISSES.pick_random(), vessel)
-	running_stream = RoachSfxHandler.play_sfx(vessel.STEPS_CHASE, vessel)
+	RoachSfxHandler.play_sfx(vessel.HISSES.pick_random(), vessel, 20)
+	running_stream = RoachSfxHandler.play_sfx(vessel.STEPS_CHASE, vessel, 20)
 	vessel.player_target = vessel.detection_area.get_overlapping_bodies()[0]
 
 func _exit_state():
