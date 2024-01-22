@@ -7,7 +7,7 @@ extends RigidBody2D
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 @onready var collision_sfx_player : AudioStreamPlayer2D = $ToolCollisionSFX
 
-var THROW_SFX = preload("res://assets/sfx/tools/throw/throw_tool.mp3")
+const THROW_SFX = preload("res://assets/sfx/tools/throw/throw_tool.mp3")
 
 var can_be_picked_up : bool = false
 var smoothed_mouse_pos : Vector2
