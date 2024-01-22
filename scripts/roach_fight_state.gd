@@ -46,7 +46,7 @@ func do_dmg():
 		else:
 			animator.play('strike_right')
 		vessel.player_target.take_dmg(10)
-		RoachSfxHandler.play_sfx(vessel.STRIKE, vessel, -5)
+		SfxHandler.play_sfx(vessel.STRIKE, vessel, -5)
 		await animator.animation_finished
 	
 func _on_reload_timer_timeout():

@@ -16,7 +16,7 @@ func _ready():
 	set_physics_process(false)  # Disable physics process by default
 
 func _enter_state() -> void:
-	roaming_stream = RoachSfxHandler.play_sfx(vessel.STEPS_ROAM, vessel, 1)
+	roaming_stream = SfxHandler.play_sfx(vessel.STEPS_ROAM, vessel, 1)
 	set_physics_process(true)  # Only enable when current state is active (roaming)
 	animator.play('walk')
 	
@@ -27,7 +27,7 @@ func _enter_state() -> void:
 		vessel.velocity.x = roam_direction * vessel.ROAM_SPEED
 
 func _exit_state() -> void:
-	RoachSfxHandler.stop_sfx(roaming_stream)
+	SfxHandler.stop_sfx(roaming_stream)
 	set_physics_process(false)
 
 func _physics_process(delta):

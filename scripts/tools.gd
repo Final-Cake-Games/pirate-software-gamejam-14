@@ -44,7 +44,7 @@ func _physics_process(delta):
 		collision_shape.disabled = false
 
 func throw():
-	RoachSfxHandler.play_sfx(THROW_SFX, player, -5)
+	SfxHandler.play_sfx(THROW_SFX, player, -5)
 	var trow_dir = player.global_position.direction_to(get_global_mouse_position())
 	player.equipped_tool.apply_impulse(trow_dir * THROW_STR)
 	player.equipped_tool = null
