@@ -2,6 +2,7 @@ extends Area2D
 
 @export var FIX_TIME : float = 10.0
 @export_enum('RED', 'BLUE', 'ORANGE', 'LIME') var fix_color : String
+@export var associated_sewage : CPUParticles2D = null
 
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var progress_time : Timer = $Progress
@@ -14,7 +15,7 @@ func _ready():
 	progress_time.start()
 
 func _process(_delta):
-	if is_getting_fixed && !is_fixed:
+	if is_getting_fixed && !is_fixed:	
 		get_fixed()
 	else:
 		if is_fixed:
@@ -34,3 +35,6 @@ func idle():
 
 func _on_progress_timeout():
 	is_fixed = true
+	if associated_sewage:
+		associated_sewage.turn_off_water_fall()
+
