@@ -14,6 +14,28 @@ extends CharacterBody2D
 
 @export var GRAVITY : float = 400
 
+#SFX
+const HISS_1 = preload("res://assets/sfx/roach/hiss/hiss_1.mp3")
+const HISS_2 = preload("res://assets/sfx/roach/hiss/hiss_2.mp3")
+const HISS_3 = preload("res://assets/sfx/roach/hiss/hiss_3.mp3")
+
+const HISSES = [HISS_1, HISS_2, HISS_3]
+
+const STEPS_CHASE = preload("res://assets/sfx/roach/chase_steps/steps.mp3")
+const STEPS_ROAM = preload("res://assets/sfx/roach/roam_steps/steps.mp3")
+const JUMP = preload("res://assets/sfx/roach/jump/jump.mp3")
+const STRIKE = preload("res://assets/sfx/roach/attack/punch.mp3")
+const DIED = preload("res://assets/sfx/roach/died/died.mp3")
+
+const GOT_HIT_1 = preload("res://assets/sfx/roach/got_hit/hit_1.mp3")
+const GOT_HIT_2 = preload("res://assets/sfx/roach/got_hit/hit_2.mp3")
+const GOT_HIT_3 = preload("res://assets/sfx/roach/got_hit/hit_3.mp3")
+const GOT_HIT_4 = preload("res://assets/sfx/roach/got_hit/hit_4.mp3")
+
+const HITS = [GOT_HIT_1, GOT_HIT_2, GOT_HIT_3, GOT_HIT_4]
+
+
+
 var ROAM_SPEED = 20
 var CHASE_SPEED = 50
 var dead = false
