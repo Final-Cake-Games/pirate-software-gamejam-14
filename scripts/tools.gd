@@ -5,7 +5,7 @@ extends RigidBody2D
 @export_enum('RED', 'BLUE', 'LIME', 'ORANGE') var tool_fix_color : String
 
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
-@onready var collision_sfx_player : AudioStreamPlayer = $ToolCollisionSFX
+@onready var collision_sfx_player : AudioStreamPlayer2D = $ToolCollisionSFX
 
 var can_be_picked_up : bool = false
 var smoothed_mouse_pos : Vector2
