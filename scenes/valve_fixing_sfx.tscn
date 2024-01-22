@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmqfylfpvwys"]
+
+[ext_resource type="AudioStream" uid="uid://dykhk85a5l0sc" path="res://assets/sfx/valves/closing/closing_valve_1.mp3" id="1_vpb5c"]
+[ext_resource type="AudioStream" uid="uid://cea5m3m5ierny" path="res://assets/sfx/valves/closing/closing_valve_2.mp3" id="2_hwn8a"]
+[ext_resource type="AudioStream" uid="uid://c6jhvtskefber" path="res://assets/sfx/valves/closing/closing_valve_3.mp3" id="3_exi5f"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0s7qh"]
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("1_vpb5c")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_hwn8a")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_exi5f")
+stream_2/weight = 1.0
+
+[node name="valve_fixing_sfx" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamRandomizer_0s7qh")
+volume_db = -10.0

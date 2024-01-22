@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbcgl0jlsfk22"]
+[gd_scene load_steps=9 format=3 uid="uid://cbcgl0jlsfk22"]
 
 [ext_resource type="Texture2D" uid="uid://bwb237sjsh38n" path="res://assets/valve_sheet.png" id="1_jj25u"]
 [ext_resource type="Script" path="res://scripts/valves.gd" id="1_juvqk"]
 [ext_resource type="PackedScene" uid="uid://b2scmylp2sxwt" path="res://scenes/valve_progress.tscn" id="3_ymwet"]
+[ext_resource type="PackedScene" uid="uid://bmqfylfpvwys" path="res://scenes/valve_fixing_sfx.tscn" id="4_hbjpr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf3vd"]
 radius = 18.0
@@ -62,5 +63,7 @@ offset_left = -5.0
 offset_top = -11.0
 offset_right = -5.0
 offset_bottom = -11.0
+
+[node name="valve_fixing_sfx" parent="." instance=ExtResource("4_hbjpr")]
 
 [connection signal="timeout" from="Progress" to="." method="_on_progress_timeout"]
