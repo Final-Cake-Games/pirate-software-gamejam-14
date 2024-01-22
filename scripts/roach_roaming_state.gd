@@ -2,12 +2,12 @@ class_name RoachRoamingState
 extends State  # inherits all of State class propreties and methods
 
 var roam_direction : float
+var roaming_stream : AudioStreamPlayer2D
 
 signal saw_player
 signal roach_die
 
 func _ready():
-		
 	roam_direction = randi_range(-1, 1)  # Randomize start direction
 	
 	if roam_direction == 0: #  Temporarily disalow 0
@@ -16,6 +16,7 @@ func _ready():
 	set_physics_process(false)  # Disable physics process by default
 
 func _enter_state() -> void:
+	roaming_stream = RoachSfxHandler.play_sfx(vessel.STEPS_ROAM, vessel, 1)
 	set_physics_process(true)  # Only enable when current state is active (roaming)
 	animator.play('walk')
 	
@@ -26,6 +27,7 @@ func _enter_state() -> void:
 		vessel.velocity.x = roam_direction * vessel.ROAM_SPEED
 
 func _exit_state() -> void:
+	RoachSfxHandler.stop_sfx(roaming_stream)
 	set_physics_process(false)
 
 func _physics_process(delta):
