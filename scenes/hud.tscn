@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwjwvcia6pftl"]
+[gd_scene load_steps=13 format=3 uid="uid://dwjwvcia6pftl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_dccop"]
 [ext_resource type="FontFile" uid="uid://c0nwfaa5jxu1a" path="res://assets/fonts/dogicapixel.ttf" id="2_10fe5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bwdlvk0l2sc1v" path="res://assets/UI/valves/blue.png" id="4_d8gly"]
 [ext_resource type="Texture2D" uid="uid://c64hm7hkdcp1t" path="res://assets/UI/valves/orange.png" id="5_prq78"]
 [ext_resource type="Texture2D" uid="uid://cgy2c13urvf8u" path="res://assets/UI/valves/lime.png" id="6_m1c3n"]
+[ext_resource type="Texture2D" uid="uid://bocqdrubalbtr" path="res://assets/win_screen_bg.png" id="7_qe7sw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u6dwk"]
 line_spacing = 1.0
@@ -15,6 +16,25 @@ font_size = 8
 [sub_resource type="LabelSettings" id="LabelSettings_byihx"]
 line_spacing = 0.0
 font = ExtResource("2_10fe5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2kp83"]
+texture = ExtResource("7_qe7sw")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekuvw"]
+line_spacing = 2.0
+font = ExtResource("2_10fe5")
+font_size = 24
+font_color = Color(0, 1, 0, 1)
+outline_size = 4
+outline_color = Color(0.945098, 1, 0.85098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_11h2d"]
+line_spacing = 2.0
+font = ExtResource("2_10fe5")
+font_size = 24
+font_color = Color(0.952941, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0.945098, 1, 0.85098, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_dccop")
@@ -27,6 +47,7 @@ grow_horizontal = 2
 
 [node name="Pannel" type="PanelContainer" parent="ValvesRemaining"]
 layout_direction = 2
+layout_mode = 0
 offset_left = 106.0
 offset_top = 2.0
 offset_right = 341.0
@@ -34,6 +55,7 @@ offset_bottom = 22.0
 size_flags_vertical = 0
 
 [node name="ValvesLeft" type="Label" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 110.0
 offset_top = 4.0
 offset_right = 154.0
@@ -46,6 +68,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RedValve" type="TextureRect" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 177.0
 offset_top = 4.0
 offset_right = 209.0
@@ -55,6 +78,7 @@ size_flags_vertical = 0
 texture = ExtResource("3_qx666")
 
 [node name="RedAmount" type="Label" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 164.0
 offset_top = 5.0
 offset_right = 178.0
@@ -64,6 +88,7 @@ text = "3"
 label_settings = SubResource("LabelSettings_byihx")
 
 [node name="BlueValve" type="TextureRect" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 223.0
 offset_top = 4.0
 offset_right = 255.0
@@ -73,6 +98,7 @@ size_flags_vertical = 0
 texture = ExtResource("4_d8gly")
 
 [node name="BlueAmount" type="Label" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 210.0
 offset_top = 5.0
 offset_right = 224.0
@@ -82,6 +108,7 @@ text = "3"
 label_settings = SubResource("LabelSettings_byihx")
 
 [node name="OrangeValve" type="TextureRect" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 267.0
 offset_top = 4.0
 offset_right = 299.0
@@ -91,6 +118,7 @@ size_flags_vertical = 0
 texture = ExtResource("5_prq78")
 
 [node name="OrangeAmount" type="Label" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 254.0
 offset_top = 5.0
 offset_right = 268.0
@@ -100,6 +128,7 @@ text = "3"
 label_settings = SubResource("LabelSettings_byihx")
 
 [node name="LimeValve" type="TextureRect" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 317.0
 offset_top = 4.0
 offset_right = 349.0
@@ -109,6 +138,7 @@ size_flags_vertical = 0
 texture = ExtResource("6_m1c3n")
 
 [node name="LimeAmount" type="Label" parent="ValvesRemaining"]
+layout_mode = 0
 offset_left = 304.0
 offset_top = 5.0
 offset_right = 318.0
@@ -116,3 +146,136 @@ offset_bottom = 19.0
 size_flags_vertical = 0
 text = "3"
 label_settings = SubResource("LabelSettings_byihx")
+
+[node name="WinScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 44.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="WinScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2kp83")
+metadata/_edit_use_anchors_ = true
+
+[node name="WinText" type="Label" parent="WinScreen/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "
+Level 
+Cleared!"
+label_settings = SubResource("LabelSettings_ekuvw")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="NextLevel" type="Button" parent="WinScreen"]
+layout_mode = 2
+offset_left = 142.0
+offset_top = 120.0
+offset_right = 276.0
+offset_bottom = 156.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_10fe5")
+theme_override_font_sizes/font_size = 16
+text = "Start Next 
+Level"
+
+[node name="Quit" type="Button" parent="WinScreen"]
+layout_mode = 2
+offset_left = 196.0
+offset_top = 161.0
+offset_right = 229.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_10fe5")
+theme_override_font_sizes/font_size = 8
+text = "Quit
+"
+
+[node name="LossScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 44.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LossScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2kp83")
+metadata/_edit_use_anchors_ = true
+
+[node name="LossText" type="Label" parent="LossScreen/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "
+Level 
+failed!"
+label_settings = SubResource("LabelSettings_11h2d")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="RetryLevel" type="Button" parent="LossScreen"]
+layout_mode = 2
+offset_left = 142.0
+offset_top = 120.0
+offset_right = 276.0
+offset_bottom = 156.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_10fe5")
+theme_override_font_sizes/font_size = 16
+text = "Restart
+Level"
+
+[node name="Quit" type="Button" parent="LossScreen"]
+layout_mode = 2
+offset_left = 196.0
+offset_top = 161.0
+offset_right = 229.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_10fe5")
+theme_override_font_sizes/font_size = 8
+text = "Quit
+"
+
+[connection signal="pressed" from="WinScreen/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="WinScreen/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="LossScreen/RetryLevel" to="." method="_on_retry_level_pressed"]
+[connection signal="pressed" from="LossScreen/Quit" to="." method="_on_quit_pressed"]
