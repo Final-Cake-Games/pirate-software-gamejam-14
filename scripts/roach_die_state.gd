@@ -7,6 +7,8 @@ func _ready():
 func _enter_state():
 	vessel.dead = true
 	vessel.velocity = Vector2.ZERO
+	RoachSfxHandler.play_sfx(vessel.HITS.pick_random(), vessel, 3)
+	RoachSfxHandler.play_sfx(vessel.DIED, vessel, 10)
 	animator.play('die')
 	await animator.animation_finished
 	vessel.queue_free()
