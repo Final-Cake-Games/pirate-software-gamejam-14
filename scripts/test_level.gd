@@ -39,15 +39,12 @@ func _process(delta):
 	#Lógica da subida de água e fecho do esgoto
 	water_level.is_rising = !level_valves_arr.all(get_closed_valves)  # Verifica todas as valvulas do nível para parar agua
 	closed_valves_arr = level_valves_arr.filter(get_closed_valves)  # Guarda valvulas fechadas
+	
 	count_valves(closed_valves_arr)  # Keep track of each closed color
 	update_hud_info()  
 	
 	total_valves_count = level_valves_arr.size()
 	closed_valves_count = closed_valves_arr.size()
-	
-	if total_valves_count == closed_valves_count:
-		sewage_source.one_shot = true
-	
 	
 	# Lógia do jogador concertar
 	if player.is_near_valve: 
