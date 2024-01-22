@@ -33,6 +33,11 @@ func _ready():
 func _process(delta):
 	if level_win || player.player_dead:
 		player.player_dead = true #  Freeze player
+		
+		await get_tree().create_timer(3).timeout
+		
+		hud.show_end_lvl(level_win)
+		
 		print('game over status -> ', level_win)
 	
 	level_win = !water_level.is_rising
@@ -84,3 +89,9 @@ func count_valves(valves_arr = null):
 		fixed_blue_valves = valves_arr.filter(func(valve): return valve.name.contains('Blue')).size()
 		fixed_lime_valves = valves_arr.filter(func(valve): return valve.name.contains('Lime')).size()
 		fixed_orange_valves = valves_arr.filter(func(valve): return valve.name.contains('Orange')).size()
+
+func _load_next_level():
+	pass # Replace with function body.
+
+func _restart_current_level():
+	get_tree().reload_current_scene()
