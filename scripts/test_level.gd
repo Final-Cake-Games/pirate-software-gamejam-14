@@ -2,6 +2,7 @@ extends Node2D
 
 @export var sewage_source : CPUParticles2D
 @export var water_level : Area2D
+@export var next_level : PackedScene
 
 @onready var player : CharacterBody2D = $Player
 @onready var hud = $HUD
@@ -33,7 +34,7 @@ func _ready():
 func _process(delta):
 	if level_win || player.player_dead:
 		player.player_dead = true #  Freeze player
-		
+		toggle_fixing(false)
 		await get_tree().create_timer(3).timeout
 		
 		hud.show_end_lvl(level_win)
@@ -91,7 +92,7 @@ func count_valves(valves_arr = null):
 		fixed_orange_valves = valves_arr.filter(func(valve): return valve.name.contains('Orange')).size()
 
 func _load_next_level():
-	pass # Replace with function body.
+	pass
 
 func _restart_current_level():
 	get_tree().reload_current_scene()
