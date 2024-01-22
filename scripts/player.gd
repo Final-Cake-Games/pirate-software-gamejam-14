@@ -35,6 +35,31 @@ var current_second_jump_force : float
 var current_max_speed : float
 var equipped_tool : RigidBody2D = null
 
+#SFX
+
+const WATER_DMG_1 = preload("res://assets/sfx/player/take_dmg/from_water/take_dmg_1.mp3") 
+const WATER_DMG_2 = preload("res://assets/sfx/player/take_dmg/from_water/take_dmg_2.mp3")
+const WATER_DMG_3 = preload("res://assets/sfx/player/take_dmg/from_water/take_dmg_3.mp3")
+
+const ROACH_DMG_1 = preload("res://assets/sfx/player/take_dmg/from_roach/take_dmg_1.mp3") 
+const ROACH_DMG_2 = preload("res://assets/sfx/player/take_dmg/from_roach/take_dmg_2.mp3")
+const ROACH_DMG_3 = preload("res://assets/sfx/player/take_dmg/from_roach/take_dmg_3.mp3")
+
+const DEATH_1 = preload("res://assets/sfx/player/die/1.ogg")
+const DEATH_2 = preload("res://assets/sfx/player/die/4.ogg")
+const DEATH_3 = preload("res://assets/sfx/player/die/5.ogg")
+const DEATH_4 = preload("res://assets/sfx/player/die/6.ogg")
+const DEATH_5 = preload("res://assets/sfx/player/die/9.ogg")
+
+const JUMP_1 = preload("res://assets/sfx/player/jump/jump_1.mp3") 
+const JUMP_2 = preload("res://assets/sfx/player/jump/jump_2.mp3")
+const JUMP_3 = preload("res://assets/sfx/player/jump/jump_3.mp3")
+
+const WATER_DMG = [WATER_DMG_1, WATER_DMG_2, WATER_DMG_3]
+const ROACH_DMG = [ROACH_DMG_1, ROACH_DMG_2, ROACH_DMG_3]
+const DIE = [DEATH_1, DEATH_2, DEATH_3, DEATH_4, DEATH_5]
+const JUMP = [JUMP_1, JUMP_2, JUMP_3]
+
 func _ready():
 	current_gravity = GRAVITY
 	current_jump_force = JUMP_FORCE
@@ -105,6 +130,7 @@ func jump():
 		velocity.y = -current_second_jump_force
 	
 	jumps_available -= 1
+	SfxHandler.play_sfx(JUMP.pick_random(), self, 0)
 	
 func animation_updater():
 	# Responsável por atualizar as animações
@@ -140,13 +166,19 @@ func flip_weapon_pos_h(looking_left):
 		weapon_position_father.position.x = 5
 		
 func take_dmg(amount):
-	if !player_dead:
+	if !player_dead:			
 		take_dmg_player.play('take_dmg')
 		life -= amount
 		if life <= 0:
 			die()
+		else:
+			if amount == 10:
+				SfxHandler.play_sfx(WATER_DMG.pick_random(), self, -5)
+			else:
+				SfxHandler.play_sfx(ROACH_DMG.pick_random(), self, -5)
 		
 func die():
+	SfxHandler.play_sfx(DIE.pick_random(), self, 5)
 	player_dead = true
 	animation_player.play('die')
 	
