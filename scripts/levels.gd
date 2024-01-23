@@ -29,8 +29,12 @@ func _ready():
 	level_valves_arr = $Valves.get_children()
 	count_valves()
 	update_hud_info()
+	hud.restart_level.connect(_restart_current_level)
 
 func _process(delta):
+	if Input.is_action_just_pressed('show_controls'):
+		hud.toggle_show_controls()
+	
 	if level_win || player.player_dead:
 		player.player_dead = true #  Freeze player
 		toggle_fixing(false)
