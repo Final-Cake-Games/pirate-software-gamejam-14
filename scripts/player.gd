@@ -173,9 +173,9 @@ func take_dmg(amount):
 			die()
 		else:
 			if amount == 10:
-				SfxHandler.play_sfx(WATER_DMG.pick_random(), self, -5)
+				SfxHandler.play_sfx(WATER_DMG.pick_random(), self, 0)
 			else:
-				SfxHandler.play_sfx(ROACH_DMG.pick_random(), self, -5)
+				SfxHandler.play_sfx(ROACH_DMG.pick_random(), self, 0)
 		
 func die():
 	SfxHandler.play_sfx(DIE.pick_random(), self, 5)
