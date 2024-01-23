@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dpm61pyitf6as"]
 
 [ext_resource type="PackedScene" uid="uid://br4wnraktcpsf" path="res://scenes/level_tile_map.tscn" id="1_rc7nl"]
-[ext_resource type="Script" path="res://scripts/test_level.gd" id="1_tjh8e"]
+[ext_resource type="Script" path="res://scripts/levels.gd" id="1_xvt8x"]
 [ext_resource type="Texture2D" uid="uid://ncfdrlcs0uxs" path="res://assets/city.png" id="2_6g3pb"]
 [ext_resource type="PackedScene" uid="uid://0msmbwsgdvkq" path="res://scenes/ladder_tile_map.tscn" id="2_urrya"]
 [ext_resource type="PackedScene" uid="uid://8v6t1lkk3nv8" path="res://scenes/player.tscn" id="3_gw6fe"]
@@ -20,9 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://qoi0wjqt4bhm" path="res://scenes/water_valve_lime.tscn" id="15_17lqi"]
 [ext_resource type="PackedScene" uid="uid://dwjwvcia6pftl" path="res://scenes/hud.tscn" id="19_mh5cp"]
 
-[node name="TestLevel" type="Node2D" node_paths=PackedStringArray("sewage_source", "water_level")]
-script = ExtResource("1_tjh8e")
-sewage_source = NodePath("SewageParticles/sewage_water_spreading")
+[node name="TestLevel" type="Node2D" node_paths=PackedStringArray("water_level")]
+script = ExtResource("1_xvt8x")
 water_level = NodePath("Water")
 
 [node name="HUD" parent="." instance=ExtResource("19_mh5cp")]
