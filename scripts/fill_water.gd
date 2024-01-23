@@ -6,10 +6,13 @@ extends Area2D
 @export var RISE_SPEED : float = 0.05  
 @export var FALL_SPEED : float = 0.2  
 
+var WATER_SPREADING = preload("res://assets/sfx/water/water_spreading.mp3")
+
 var is_rising : bool = true
 var player : CharacterBody2D = null
 
 func _ready():
+	var water_stream = SfxHandler.play_sfx(WATER_SPREADING, self, -25)
 	dmg_timer.stop()
 	
 func _process(delta):
