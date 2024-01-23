@@ -898,7 +898,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s4rio"]
-radius = 61.131
+radius = 103.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmaav"]
 size = Vector2(46, 23)
@@ -929,9 +929,9 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="RoachStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+[node name="RoachStateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("5_ocg1l")
-current_state = NodePath("RoachRoamingState")
+default_state = NodePath("RoachRoamingState")
 
 [node name="RoachRoamingState" type="Node" parent="RoachStateMachine" node_paths=PackedStringArray("vessel", "animator")]
 script = ExtResource("7_a23js")
