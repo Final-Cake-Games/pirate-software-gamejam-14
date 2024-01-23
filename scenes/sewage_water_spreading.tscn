@@ -11,7 +11,7 @@ point_count = 2
 [node name="sewage_water_spreading" type="CPUParticles2D"]
 z_index = -20
 scale = Vector2(0.25, 0.25)
-amount = 250
+amount = 500
 lifetime = 0.5
 randomness = 0.5
 emission_shape = 3
