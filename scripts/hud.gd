@@ -26,6 +26,12 @@ func _on_next_level_pressed():
 
 func _on_retry_level_pressed():
 	restart_level.emit()
+	
+func toggle_show_controls():
+	if $Tutorial.visible:
+		$Tutorial.visible = false
+	else:
+		$Tutorial.visible = true
 
 func _on_quit_pressed():
 	pass
