@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var sewage_source : CPUParticles2D
 @export var water_level : Area2D
 @export var next_level : PackedScene
 
@@ -38,8 +37,6 @@ func _process(delta):
 		await get_tree().create_timer(3).timeout
 		
 		hud.show_end_lvl(level_win)
-		
-		print('game over status -> ', level_win)
 	
 	level_win = !water_level.is_rising
 	#Lógica da subida de água e fecho do esgoto
