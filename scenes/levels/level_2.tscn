@@ -31,6 +31,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="FunnyWarning" type="Label" parent="LevelInfo"]
+layout_mode = 0
 offset_left = -221.0
 offset_top = 421.0
 offset_right = -99.0
@@ -48,6 +49,7 @@ texture = ExtResource("3_gknbk")
 [node name="Water" parent="." instance=ExtResource("4_ip7i5")]
 position = Vector2(223, 496)
 scale = Vector2(4.5, 1e-05)
+MAX_HEIGHT = 600.0
 
 [node name="HUD" parent="." instance=ExtResource("5_mshwk")]
 

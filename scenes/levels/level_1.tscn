@@ -71,6 +71,7 @@ texture = ExtResource("2_81vf3")
 [node name="Water" parent="." instance=ExtResource("2_pcpdf")]
 position = Vector2(223, 175)
 scale = Vector2(4.5, 1e-05)
+MAX_HEIGHT = 270.0
 
 [node name="HUD" parent="." instance=ExtResource("2_ssxty")]
 
