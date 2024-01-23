@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://pc6xw7nj2muu"]
+[gd_scene load_steps=16 format=3 uid="uid://pc6xw7nj2muu"]
 
 [ext_resource type="Script" path="res://scripts/levels.gd" id="1_10454"]
 [ext_resource type="Texture2D" uid="uid://ncfdrlcs0uxs" path="res://assets/city.png" id="2_81vf3"]
 [ext_resource type="FontFile" uid="uid://c0nwfaa5jxu1a" path="res://assets/fonts/dogicapixel.ttf" id="2_ah8hj"]
+[ext_resource type="PackedScene" uid="uid://r2uvk1vx6um1" path="res://scenes/levels/level_2.tscn" id="2_la12v"]
 [ext_resource type="PackedScene" uid="uid://nfkkds3x475i" path="res://scenes/water.tscn" id="2_pcpdf"]
 [ext_resource type="PackedScene" uid="uid://dwjwvcia6pftl" path="res://scenes/hud.tscn" id="2_ssxty"]
 [ext_resource type="PackedScene" uid="uid://cbcgl0jlsfk22" path="res://scenes/water_valve_red.tscn" id="4_57n1w"]
@@ -22,6 +23,7 @@ font_size = 8
 position = Vector2(188, 258)
 script = ExtResource("1_10454")
 water_level = NodePath("Water")
+next_level = ExtResource("2_la12v")
 
 [node name="LevelInfo" type="Control" parent="."]
 layout_mode = 3

@@ -30,6 +30,7 @@ func _ready():
 	count_valves()
 	update_hud_info()
 	hud.restart_level.connect(_restart_current_level)
+	hud.next_level.connect(_load_next_level)
 
 func _process(delta):
 	if Input.is_action_just_pressed('show_controls'):
@@ -93,7 +94,7 @@ func count_valves(valves_arr = null):
 		fixed_orange_valves = valves_arr.filter(func(valve): return valve.name.contains('Orange')).size()
 
 func _load_next_level():
-	pass
+	get_tree().change_scene_to_packed(next_level)
 
 func _restart_current_level():
 	get_tree().reload_current_scene()
