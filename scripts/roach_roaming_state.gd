@@ -9,14 +9,12 @@ signal roach_die
 
 func _ready():
 	roam_direction = randi_range(-1, 1)  # Randomize start direction
-	
 	if roam_direction == 0: #  Temporarily disalow 0
 		roam_direction = 1
 		
 	set_physics_process(false)  # Disable physics process by default
 
 func _enter_state() -> void:
-	roaming_stream = SfxHandler.play_sfx(vessel.STEPS_ROAM, vessel, 1)
 	set_physics_process(true)  # Only enable when current state is active (roaming)
 	animator.play('walk')
 	
@@ -25,6 +23,9 @@ func _enter_state() -> void:
 		
 	if vessel.velocity.x == 0:  # Start roaming
 		vessel.velocity.x = roam_direction * vessel.ROAM_SPEED
+		
+	roaming_stream = SfxHandler.play_sfx(vessel.STEPS_ROAM, self, -15)
+	roaming_stream.max_distance = 700
 
 func _exit_state() -> void:
 	SfxHandler.stop_sfx(roaming_stream)
