@@ -9,7 +9,7 @@ _data = [Vector2(0, 1), 0.0, 0.183673, 0, 0, Vector2(0.982906, 0.032967), 0.0, 0
 point_count = 2
 
 [node name="sewage_water_spreading" type="CPUParticles2D"]
-z_index = -20
+z_index = -60
 scale = Vector2(0.25, 0.25)
 amount = 500
 lifetime = 0.5
