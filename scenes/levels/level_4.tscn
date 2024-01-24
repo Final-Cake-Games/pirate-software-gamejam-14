@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0ry4qjr7wpix"]
+[gd_scene load_steps=18 format=3 uid="uid://cafkd7xdbdam5"]
 
 [ext_resource type="Script" path="res://scripts/levels.gd" id="1_iqa0e"]
 [ext_resource type="PackedScene" uid="uid://doaw007ra3ois" path="res://scenes/levels/level_3.tscn" id="2_pvrfp"]
@@ -21,12 +21,11 @@
 font = ExtResource("3_cg4ja")
 font_size = 8
 
-[node name="Level2" type="Node2D"]
+[node name="Level4" type="Node2D" node_paths=PackedStringArray("water_level")]
 position = Vector2(188, 258)
 script = ExtResource("1_iqa0e")
+water_level = NodePath("Water")
 next_level = ExtResource("2_pvrfp")
-water_level = Object(Area2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":600,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(223, 496),"rotation":0.0,"scale":Vector2(4.5, 1e-05),"skew":0.0,"disable_mode":0,"collision_layer":0,"collision_mask":2,"collision_priority":1.0,"input_pickable":true,"monitoring":true,"monitorable":true,"priority":0,"gravity_space_override":0,"gravity_point":false,"gravity_point_unit_distance":0.0,"gravity_point_center":Vector2(0, 1),"gravity_direction":Vector2(0, 1),"gravity":980.0,"linear_damp_space_override":0,"linear_damp":0.1,"angular_damp_space_override":0,"angular_damp":1.0,"audio_bus_override":false,"audio_bus_name":&"Master","script":Resource("res://scripts/fill_water.gd"),"MAX_HEIGHT":600.0,"RISE_SPEED":0.05,"FALL_SPEED":0.2)
-
 
 [node name="LevelInfo" type="Control" parent="."]
 layout_mode = 3
