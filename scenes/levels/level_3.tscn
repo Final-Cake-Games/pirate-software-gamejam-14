@@ -90,11 +90,11 @@ layer_0/tile_data = PackedInt32Array(2818059, 0, 2, 2752523, 0, 1, 2686987, 0, 1
 [node name="Tools" type="Node" parent="."]
 
 [node name="PlumberToolOrange" parent="Tools" instance=ExtResource("8_xr3gc")]
-position = Vector2(913, 725)
+position = Vector2(321, 735)
 rotation = -2.07318
 
 [node name="PlumberToolLime" parent="Tools" instance=ExtResource("9_wx8wj")]
-position = Vector2(1009, 790)
+position = Vector2(261, 803)
 rotation = -2.07318
 
 [node name="Valves" type="Node" parent="."]
