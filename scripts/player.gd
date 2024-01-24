@@ -93,7 +93,7 @@ func _physics_process(delta):
 		
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
-			if collision.get_collider().name == 'Box':
+			if collision.get_collider().name.begins_with('Box'):
 				collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 		
 		if !is_on_floor() && !is_on_ladder:  # Se não está no chão e escadas, aplica gravidade
