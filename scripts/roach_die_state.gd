@@ -11,5 +11,6 @@ func _enter_state():
 	SfxHandler.play_sfx(vessel.DIED, vessel, 1)
 	animator.play('die')
 	await animator.animation_finished
+	await get_tree().create_timer(3).timeout
 	vessel.queue_free()
 
