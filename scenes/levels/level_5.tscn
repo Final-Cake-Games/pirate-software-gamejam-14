@@ -25,7 +25,7 @@
 font = ExtResource("2_aw0n3")
 font_size = 8
 
-[node name="Level3" type="Node2D" node_paths=PackedStringArray("water_level")]
+[node name="Level5" type="Node2D" node_paths=PackedStringArray("water_level")]
 position = Vector2(188, 258)
 script = ExtResource("1_o6oub")
 water_level = NodePath("Water")
