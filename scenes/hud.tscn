@@ -314,7 +314,7 @@ offset_right = 47.5
 offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "[W][D]: Move
+text = "[A][D]: Move
 [SPACE]: Jump
 [E]: Pick up tool
 [G]: Drop tool
