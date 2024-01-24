@@ -104,3 +104,6 @@ rotation = 3.10052
 
 [node name="Player" parent="." instance=ExtResource("13_mi4b2")]
 position = Vector2(-200, 480)
+
+[node name="LvlTimer" type="Timer" parent="."]
+autostart = true

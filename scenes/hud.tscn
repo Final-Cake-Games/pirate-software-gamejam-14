@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwjwvcia6pftl"]
+[gd_scene load_steps=15 format=3 uid="uid://dwjwvcia6pftl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_dccop"]
 [ext_resource type="FontFile" uid="uid://c0nwfaa5jxu1a" path="res://assets/fonts/dogicapixel.ttf" id="2_10fe5"]
@@ -14,6 +14,10 @@ font = ExtResource("2_10fe5")
 font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_byihx"]
+line_spacing = 0.0
+font = ExtResource("2_10fe5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rafby"]
 line_spacing = 0.0
 font = ExtResource("2_10fe5")
 
@@ -152,14 +156,42 @@ size_flags_vertical = 0
 text = "3"
 label_settings = SubResource("LabelSettings_byihx")
 
+[node name="LevelTime" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 25.0
+offset_right = 20.0
+offset_bottom = 65.0
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelTime"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+
+[node name="Time" type="Label" parent="LevelTime/PanelContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_rafby")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="WinScreen" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 44.0
-offset_bottom = -26.0
+offset_top = 47.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -222,8 +254,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 44.0
-offset_bottom = -26.0
+offset_top = 47.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 

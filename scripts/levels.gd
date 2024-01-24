@@ -6,12 +6,15 @@ extends Node2D
 @onready var player : CharacterBody2D = $Player
 @onready var hud = $HUD
 
+
+var lvl_timer : Timer
 var level_valves_arr = []
 var closed_valves_arr = []
 var total_valves_count : int = 0
 var closed_valves_count : int = 0
 var last_seen_valve : Area2D = null
 var level_win : bool = false
+var time : int = 0
 
 var total_red_valves : int = 0
 var total_blue_valves : int = 0
@@ -26,6 +29,10 @@ var fixed_orange_valves : int = 0
 
 
 func _ready():
+	time = 0
+	lvl_timer = $LvlTimer
+	lvl_timer.timeout.connect(_update_timer)
+	
 	level_valves_arr = $Valves.get_children()
 	count_valves()
 	update_hud_info()
@@ -39,6 +46,7 @@ func _process(delta):
 		_restart_current_level()
 	
 	if level_win || player.player_dead:
+		lvl_timer.paused = true
 		player.player_dead = true #  Freeze player
 		toggle_fixing(false)
 		await get_tree().create_timer(3).timeout
@@ -100,3 +108,10 @@ func _load_next_level():
 
 func _restart_current_level():
 	get_tree().reload_current_scene()
+	
+func _update_timer():
+	time += 1
+	hud.update_timer(time)
+	
+	lvl_timer.timeout.connect(_update_timer)
+	lvl_timer.start()

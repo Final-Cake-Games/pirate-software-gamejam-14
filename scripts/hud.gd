@@ -27,6 +27,9 @@ func _on_next_level_pressed():
 func _on_retry_level_pressed():
 	restart_level.emit()
 	
+func update_timer(time):
+	$LevelTime/PanelContainer/Time.text = str(time)
+
 func toggle_show_controls():
 	if $Tutorial.visible:
 		$Tutorial.visible = false
