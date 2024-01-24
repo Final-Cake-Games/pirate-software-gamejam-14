@@ -290,7 +290,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="Panel" type="Panel" parent="Tutorial"]
-custom_minimum_size = Vector2(100, 125)
+custom_minimum_size = Vector2(100, 130)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -320,7 +320,8 @@ text = "[A][D]: Move
 [G]: Drop tool
 [F]: Fix valve
 [MOUSE]: Aim
-[M.CLICK]: Throw"
+[M.CLICK]: Throw
+[R]: Restart Lvl"
 label_settings = SubResource("LabelSettings_efw2u")
 
 [connection signal="pressed" from="WinScreen/NextLevel" to="." method="_on_next_level_pressed"]

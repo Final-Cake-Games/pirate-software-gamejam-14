@@ -35,6 +35,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed('show_controls'):
 		hud.toggle_show_controls()
+	if Input.is_action_just_pressed('reset_level'):
+		_restart_current_level()
 	
 	if level_win || player.player_dead:
 		player.player_dead = true #  Freeze player
