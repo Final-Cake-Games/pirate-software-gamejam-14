@@ -37,4 +37,4 @@ func toggle_show_controls():
 		$Tutorial.visible = true
 
 func _on_quit_pressed():
-	pass
+	get_tree().quit()
