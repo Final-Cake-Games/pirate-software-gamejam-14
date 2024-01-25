@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dk2mb31yfk7vf" path="res://scenes/enemy_roach.tscn" id="14_kcisj"]
 [ext_resource type="PackedScene" uid="uid://bav6qq6dv2hhc" path="res://scenes/water_valve_blue.tscn" id="14_xwprt"]
 
-[node name="Level3" type="Node2D" node_paths=PackedStringArray("water_level")]
+[node name="Level5" type="Node2D" node_paths=PackedStringArray("water_level")]
 position = Vector2(188, 258)
 script = ExtResource("1_o6oub")
 water_level = NodePath("Water")
