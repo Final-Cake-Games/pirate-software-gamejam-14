@@ -7,6 +7,7 @@ extends Area2D
 @export var FALL_SPEED : float = 0.2  
 
 var WATER_SPREADING = preload("res://assets/sfx/water/water_spreading.mp3")
+var WATER_SPLASH = preload("res://assets/sfx/water/water_splash.mp3")
 
 var is_rising : bool = true
 var player : CharacterBody2D = null
@@ -28,6 +29,7 @@ func _process(delta):
 func _on_body_entered(body):
 	player = body
 	player.set_water_physics()
+	SfxHandler.play_sfx(WATER_SPLASH, player, -5)
 
 func _on_body_exited(body):
 	player.revert_physics()
