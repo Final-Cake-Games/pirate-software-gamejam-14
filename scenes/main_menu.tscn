@@ -1,0 +1,189 @@
+[gd_scene load_steps=17 format=3 uid="uid://t28tksaij11r"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_4qctj"]
+[ext_resource type="Texture2D" uid="uid://dw3ngvm71n8kx" path="res://assets/UI/menu/bg.png" id="1_8rk6j"]
+[ext_resource type="Texture2D" uid="uid://cw03yhr37mf56" path="res://assets/UI/menu_truck/truck.png" id="2_0gfbj"]
+[ext_resource type="FontFile" uid="uid://c0nwfaa5jxu1a" path="res://assets/fonts/dogicapixel.ttf" id="3_emtpl"]
+[ext_resource type="StyleBox" uid="uid://bmuxp1bygcqrv" path="res://assets/button_styles/button_normal.tres" id="4_i17mq"]
+[ext_resource type="StyleBox" uid="uid://dolfjfqdc6ab" path="res://assets/button_styles/button_hover.tres" id="5_1xxp1"]
+[ext_resource type="StyleBox" uid="uid://cldau82pqjvr1" path="res://assets/button_styles/button_pressed.tres" id="6_8xxvs"]
+
+[sub_resource type="Gradient" id="Gradient_n2mmd"]
+offsets = PackedFloat32Array(0.542253, 1)
+colors = PackedColorArray(0, 0, 0, 0.686275, 1, 1, 1, 0.34902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s61is"]
+atlas = ExtResource("2_0gfbj")
+region = Rect2(0, 0, 200, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdvyp"]
+atlas = ExtResource("2_0gfbj")
+region = Rect2(200, 0, 200, 77)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vwcop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s61is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdvyp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gdsuk"]
+font = ExtResource("3_emtpl")
+font_size = 8
+shadow_color = Color(0, 0, 0, 0.662745)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cjq7v"]
+font = ExtResource("3_emtpl")
+font_size = 32
+font_color = Color(0, 0.768627, 0, 1)
+outline_size = 5
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.745098)
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="Animation" id="Animation_tha5b"]
+resource_name = "start_game"
+length = 0.80001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, 0), Vector2(13, 0), Vector2(23, 0), Vector2(43, 0), Vector2(73, 0), Vector2(113, 0), Vector2(153, 0), Vector2(500, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4j3i0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_voo2i"]
+_data = {
+"RESET": SubResource("Animation_4j3i0"),
+"start_game": SubResource("Animation_tha5b")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4qctj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8rk6j")
+expand_mode = 2
+
+[node name="Truck" type="Node2D" parent="."]
+
+[node name="Smoke" type="CPUParticles2D" parent="Truck"]
+position = Vector2(311, 246)
+amount = 100
+lifetime = 0.7
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 4)
+direction = Vector2(-1, -1)
+spread = 3.25
+gravity = Vector2(0, -350)
+initial_velocity_min = 60.0
+initial_velocity_max = 80.0
+scale_amount_min = 0.5
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_n2mmd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Truck"]
+position = Vector2(380, 227)
+sprite_frames = SubResource("SpriteFrames_vwcop")
+autoplay = "default"
+frame_progress = 0.459311
+
+[node name="Authors" type="Label" parent="Truck"]
+offset_left = 324.0
+offset_top = 181.0
+offset_right = 408.0
+offset_bottom = 208.0
+text = "Made By:
+Eusebio Alves
+Joao Farroba"
+label_settings = SubResource("LabelSettings_gdsuk")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 14.0
+offset_right = 57.0
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Poop 
+Stoppers"
+label_settings = SubResource("LabelSettings_cjq7v")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 125.0
+offset_right = 224.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("3_emtpl")
+theme_override_styles/normal = ExtResource("4_i17mq")
+theme_override_styles/hover = ExtResource("5_1xxp1")
+theme_override_styles/pressed = ExtResource("6_8xxvs")
+theme_override_styles/focus = ExtResource("4_i17mq")
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 174.0
+offset_right = 171.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("3_emtpl")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("4_i17mq")
+theme_override_styles/hover = ExtResource("5_1xxp1")
+theme_override_styles/pressed = ExtResource("6_8xxvs")
+theme_override_styles/focus = ExtResource("4_i17mq")
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_voo2i")
+}
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
