@@ -6,6 +6,8 @@ extends Node2D
 @onready var player : CharacterBody2D = $Player
 @onready var hud = $HUD
 
+var level_win_sfx = preload("res://assets/sfx/lvl_state/win/lvl_win.mp3")
+var level_loss_sfx = preload("res://assets/sfx/lvl_state/fail/lvl_fail.mp3")
 
 var lvl_timer : Timer
 var level_valves_arr = []
@@ -25,7 +27,7 @@ var fixed_red_valves : int = 0
 var fixed_blue_valves : int = 0
 var fixed_lime_valves : int = 0
 var fixed_orange_valves : int = 0
-
+var has_played_status_sfx : bool = false
 
 
 func _ready():
@@ -46,9 +48,18 @@ func _process(delta):
 		_restart_current_level()
 	
 	if level_win || player.player_dead:
+		
 		lvl_timer.paused = true
 		player.player_dead = true #  Freeze player
 		toggle_fixing(false)
+		
+		if has_played_status_sfx == false:
+			if level_win:
+				SfxHandler.play_sfx(level_win_sfx, self, 0)
+			else:
+				SfxHandler.play_sfx(level_loss_sfx, self, 0)
+			has_played_status_sfx = true
+		
 		await get_tree().create_timer(3).timeout
 		
 		hud.show_end_lvl(level_win)
