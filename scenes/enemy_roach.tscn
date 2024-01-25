@@ -897,11 +897,11 @@ _data = {
 "walk": SubResource("Animation_q36x1")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s4rio"]
-radius = 103.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3axju"]
+height = 212.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmaav"]
-size = Vector2(46, 23)
+size = Vector2(54, 27)
 
 [node name="EnemyRoach" type="CharacterBody2D"]
 z_index = 550
@@ -958,14 +958,17 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
-shape = SubResource("CircleShape2D_s4rio")
+position = Vector2(0, -27)
+rotation = -1.5708
+scale = Vector2(4, 1)
+shape = SubResource("CapsuleShape2D_3axju")
 
 [node name="FightRange" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightRange"]
-position = Vector2(0, -11.5)
+position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_gmaav")
 
 [connection signal="timeout" from="ReloadTimer" to="RoachStateMachine/RoachFightState" method="_on_reload_timer_timeout"]

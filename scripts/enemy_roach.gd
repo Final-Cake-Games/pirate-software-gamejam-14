@@ -36,8 +36,8 @@ const HITS = [GOT_HIT_1, GOT_HIT_2, GOT_HIT_3, GOT_HIT_4]
 
 
 
-var ROAM_SPEED = 20
-var CHASE_SPEED = 50
+var ROAM_SPEED = 50
+var CHASE_SPEED = 100
 var dead = false
 
 var current_direction : Vector2
