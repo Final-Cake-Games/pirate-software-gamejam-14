@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwjwvcia6pftl"]
+[gd_scene load_steps=18 format=3 uid="uid://dwjwvcia6pftl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_dccop"]
 [ext_resource type="FontFile" uid="uid://c0nwfaa5jxu1a" path="res://assets/fonts/dogicapixel.ttf" id="2_10fe5"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c64hm7hkdcp1t" path="res://assets/UI/valves/orange.png" id="5_prq78"]
 [ext_resource type="Texture2D" uid="uid://cgy2c13urvf8u" path="res://assets/UI/valves/lime.png" id="6_m1c3n"]
 [ext_resource type="Texture2D" uid="uid://bocqdrubalbtr" path="res://assets/win_screen_bg.png" id="7_qe7sw"]
+[ext_resource type="StyleBox" uid="uid://bmuxp1bygcqrv" path="res://assets/button_styles/button_normal.tres" id="8_nemky"]
+[ext_resource type="StyleBox" uid="uid://dolfjfqdc6ab" path="res://assets/button_styles/button_hover.tres" id="9_a4fqq"]
+[ext_resource type="StyleBox" uid="uid://cldau82pqjvr1" path="res://assets/button_styles/button_pressed.tres" id="10_hg67b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u6dwk"]
 line_spacing = 1.0
@@ -225,13 +228,17 @@ uppercase = true
 [node name="NextLevel" type="Button" parent="WinScreen"]
 layout_mode = 2
 offset_left = 142.0
-offset_top = 120.0
-offset_right = 276.0
-offset_bottom = 156.0
+offset_top = 112.0
+offset_right = 278.0
+offset_bottom = 150.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_10fe5")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("8_nemky")
+theme_override_styles/hover = ExtResource("9_a4fqq")
+theme_override_styles/pressed = ExtResource("10_hg67b")
+theme_override_styles/focus = ExtResource("8_nemky")
 text = "Start Next 
 Level"
 
@@ -245,6 +252,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_10fe5")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("8_nemky")
+theme_override_styles/hover = ExtResource("9_a4fqq")
+theme_override_styles/pressed = ExtResource("10_hg67b")
+theme_override_styles/focus = ExtResource("8_nemky")
 text = "Quit
 "
 
@@ -289,13 +300,17 @@ uppercase = true
 [node name="RetryLevel" type="Button" parent="LossScreen"]
 layout_mode = 2
 offset_left = 142.0
-offset_top = 120.0
+offset_top = 112.0
 offset_right = 276.0
-offset_bottom = 156.0
+offset_bottom = 150.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_10fe5")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("8_nemky")
+theme_override_styles/hover = ExtResource("9_a4fqq")
+theme_override_styles/pressed = ExtResource("10_hg67b")
+theme_override_styles/focus = ExtResource("8_nemky")
 text = "Restart
 Level"
 
@@ -309,6 +324,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_10fe5")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("8_nemky")
+theme_override_styles/hover = ExtResource("9_a4fqq")
+theme_override_styles/pressed = ExtResource("10_hg67b")
+theme_override_styles/focus = ExtResource("8_nemky")
 text = "Quit
 "
 
