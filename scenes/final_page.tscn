@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cs74xk3u8hbc"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_k4b3j"]
+[ext_resource type="Script" path="res://scripts/final_page.gd" id="1_mjijy"]
 [ext_resource type="Texture2D" uid="uid://dw3ngvm71n8kx" path="res://assets/UI/menu/bg.png" id="2_fpwhc"]
 [ext_resource type="Texture2D" uid="uid://cw03yhr37mf56" path="res://assets/UI/menu_truck/truck.png" id="3_14283"]
 [ext_resource type="FontFile" uid="uid://c0nwfaa5jxu1a" path="res://assets/fonts/dogicapixel.ttf" id="4_os027"]
@@ -93,14 +93,14 @@ outline_size = 5
 outline_color = Color(0, 1, 0.101961, 0.592157)
 shadow_color = Color(0, 0, 0, 0.737255)
 
-[node name="MainMenu" type="Control"]
+[node name="FinalPage" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_k4b3j")
+script = ExtResource("1_mjijy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -157,8 +157,8 @@ offset_top = 14.0
 offset_right = 57.0
 offset_bottom = 37.0
 grow_horizontal = 2
-text = "Poop 
-Stoppers"
+text = "Valve 
+Man"
 label_settings = SubResource("LabelSettings_cjq7v")
 
 [node name="Quit" type="Button" parent="."]
